@@ -1,0 +1,12 @@
+{
+  "name": "mixDanStudio_Babel-Webpack-JavaScript",
+  "version": "1.0.0",
+  "description": "將專案改成Native JavaScript ---",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
