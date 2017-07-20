@@ -12,5 +12,9 @@
   "dependencies": {
     "webpack": "^3.3.0",
     "webpack-dev-server": "^2.5.1"
+  },
+  "devDependencies": {
+    "css-loader": "^0.28.4",
+    "style-loader": "^0.18.2"
   }
 }
