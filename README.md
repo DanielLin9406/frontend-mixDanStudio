@@ -2,3 +2,11 @@
 ---
 
 工具：Npm + Babel + Wepack
+
+
+Compile and Run
+---
+ 
+```
+node_modules/.bin/webpack-dev-server
+```
