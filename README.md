@@ -10,3 +10,10 @@ Compile and Run
 ```
 node_modules/.bin/webpack-dev-server
 ```
+
+Pack
+---
+ 
+```
+node_modules/.bin/webpack
+```
