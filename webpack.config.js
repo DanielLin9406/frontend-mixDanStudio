@@ -10,7 +10,7 @@ const htmlWebpackPlugin = require('html-webpack-plugin');
 const extractTextWebpackPlugin = require('extract-text-webpack-plugin');
 
 //获取入口js
-const entries = getEntry('./src/components/**/**.js');
+const entries = getEntry('./src/views/**/**.js');
 module.exports = {
   // context: path.resolve(__dirname, './src'),
   entry: entries,
@@ -21,8 +21,7 @@ module.exports = {
   // },
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: "/dist/",
-    filename: 'js/[name].bundle.js',
+    filename: 'js/[name].js',
   },
   devServer:{
     contentBase: path.resolve(__dirname, './src'),
@@ -63,11 +62,11 @@ module.exports = {
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
       name: 'commons',
-      filename: 'commons.js',
+      filename: 'js/commons.js',
       minChunks: 2,
     }),
-    ...getPlugins('./src/components/**/**.html'),
-    new extractTextWebpackPlugin('./dist/css/[name].css')
+    ...getPlugins('./src/views/**/**.html'),
+    new extractTextWebpackPlugin('./css/[name].css')
   ],
   resolve: {
     modules: [path.resolve(__dirname, './src'), 'node_modules']
