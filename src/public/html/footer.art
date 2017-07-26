@@ -1,0 +1,49 @@
+<div class="footer_info">
+    <div class="footer_logo footer">
+        <div class="vam"></div>
+        <a href="index.html"><img alt="footer_img"></a>
+    </div>
+    <div class="footer_services footer">
+        <h2>服務項目</h2>
+        <ul>
+            <li><a href="services.html">服務項目</a></li>
+            <li><a href="services.html">工作流程</a></li>
+        </ul>	
+    </div>
+    <div class="footer_works footer">
+        <h2>作品欣賞</h2>
+        <ul>
+            <li><a href="photoworks.html">攝影作品</a></li>
+            <li><a href="webworks.html">網站作品</a></li>
+        </ul>	
+    </div>
+    <div class="footer_brand footer">
+        <h2>品牌故事</h2>
+        <ul>
+            <li><a href="brand.html">關於D</a></li>
+            <li><a href="brand.html">團隊介紹</a></li>
+            <li><a href="brand.html">品牌故事</a></li>
+        </ul>
+    </div>
+    <div class="footer_bis footer">
+        <h2>聯絡我們</h2>
+        <ul>
+            <li><a href="reserve.html">方案選擇</a></li>
+            <li><a href="reserve.html">檔期查詢</a></li>
+            <li><a href="reserve.html">聯絡我們</a></li>
+        </ul>
+    </div>
+    <div class="follow footer">
+        <h2>Follow Us！</h2>
+        <div class="follow_social">
+            <div class="vam2"></div>
+            <a href="#"><div><img></div></a>
+            <a href="#"><div><img></div></a>
+            <a href="#"><div><img></div></a>
+            <a href="#"><div><img></div></a>
+        </div>	
+    </div>
+</div>
+<div class="bottom">
+    <p>攝影服務 / 網站建置 / 全方位視覺整合 / 混丹視覺工作室 MIX DAN STUDIO</p>
+</div>

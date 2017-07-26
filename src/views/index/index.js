@@ -1,8 +1,8 @@
 // sass
 require('./index.scss');
 // js
-import '../../public/js/header.js';
-
+require('../../public/js/header.js');
+require('../../public/js/footer.js');
 
 
 

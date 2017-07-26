@@ -1,11 +1,12 @@
-const render = require('./header.art');
+const render = require('../html/header.art');
 const data = {
     title: 'My Page'
 };
 const html = render(data);
+const header_bgc = document.querySelector('.header_bgc');
 
 if (typeof document === 'object') {
-    document.body.innerHTML = html;
+    header_bgc.innerHTML = html;
 }
 
 module.exports = "header";

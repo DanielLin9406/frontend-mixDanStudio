@@ -12,9 +12,9 @@ module.exports = {
   entry: {
     //app: './main.js',
     //Multiple files, bundled together
+    vendor: './src/vendor',
     index:'./src/views/index/index',
     photowork: './src/views/photowork/photowork',
-    vendor: './src/vendor',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -37,7 +37,6 @@ module.exports = {
         use: extractTextWebpackPlugin.extract({
           use: ['css-loader', 'sass-loader'],
           fallback: 'style-loader'
-          
         })
       },
       {
