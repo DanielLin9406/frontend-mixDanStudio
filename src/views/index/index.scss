@@ -1,13 +1,11 @@
+@import "../../public/sass/_reset.scss";
+
 body{
 	width:100%;
 	margin:auto;
 	text-align:center;
-	div{
-		width: 100px;
-		height: 100px;
-		background-color:#ff0;
-	}
+	background-color:#F9F9F9;
+
+	font-family:"Microsoft YaHei";
 	
-	// font-family:Huakang_circle,華康中圓體, 細明體, 
-	// 新細明體, arial ,Times New Roman; 	
 }

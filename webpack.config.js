@@ -1,31 +1,28 @@
 const path = require('path');
 const webpack = require('webpack');
 const glob = require('glob');
-
-// webpack插件 按照指定模版生成html文件
-// https://github.com/jantimon/html-webpack-plugin
 const htmlWebpackPlugin = require('html-webpack-plugin');
-// webpack插件 将css文件单独打包到css文件，而不是写在js文件中（因为webpack将一切都视为模块，所以默认会打包到js文件中）
-// https://github.com/webpack-contrib/extract-text-webpack-plugin
 const extractTextWebpackPlugin = require('extract-text-webpack-plugin');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
-//获取入口js
 const entries = getEntry('./src/views/**/**.js');
 module.exports = {
   // context: path.resolve(__dirname, './src'),
-  entry: entries,
-  // entry: {
-    // app: './main.js',
-    // Multiple files, bundled together
-    // app:['./home.js','./events.js','./vendor.js'],
-  // },
+  // entry: entries,
+  entry: {
+    //app: './main.js',
+    //Multiple files, bundled together
+    index:'./src/views/index/index',
+    photowork: './src/views/photowork/photowork',
+    vendor: './src/vendor',
+  },
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'js/[name].js',
   },
-  devServer:{
-    contentBase: path.resolve(__dirname, './src'),
-  },
+  // devServer:{
+  //   contentBase: path.resolve(__dirname, './src'),
+  // },
   module: {
     loaders: [
       {
@@ -38,35 +35,41 @@ module.exports = {
       {
         test: /\.(sass|scss)$/,
         use: extractTextWebpackPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader']
+          use: ['css-loader', 'sass-loader'],
+          fallback: 'style-loader'
+          
         })
+      },
+      {
+        test: /\.art$/,
+        loader: "art-template-loader",
+        options: {
+          // art-template options (if necessary)
+          // @see https://github.com/aui/art-template
+        }
       },      
     ],
-    // rules: [
-    //   {
-    //     test: /\.css$/,
-    //     use: ['style-loader', 'css-loader'],
-    //   },
-    //   {
-    //     test: /\.(sass|scss)$/,
-    //     use: [
-    //       'style-loader',
-    //       'css-loader',
-    //       'sass-loader',
-    //     ]
-    //   },
-    //   // Loaders for other file types can go here
-    // ],
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'commons',
-      filename: 'js/commons.js',
-      minChunks: 2,
+      names: ['common','vendor'],
+      minChunks: 2
     }),
     ...getPlugins('./src/views/**/**.html'),
-    new extractTextWebpackPlugin('./css/[name].css')
+    new extractTextWebpackPlugin({
+      filename: (getPath) =>{
+        console.log(getPath('./css/[name].css'));
+        return getPath('./css/[name].css').replace('./dist/./css','./css')
+      },
+      allChunks:true 
+    }),
+    new BrowserSyncPlugin({
+      // browse to http://localhost:3000/ during development, 
+      // ./public directory is being served 
+      host: 'localhost',
+      port: 3000,
+      server: { baseDir: ['dist'] }
+    })    
   ],
   resolve: {
     modules: [path.resolve(__dirname, './src'), 'node_modules']

@@ -4,16 +4,18 @@
 工具：Npm + Babel + Wepack
 
 
-Compile and Run
+Run Server
 ---
  
 ```
-node_modules/.bin/webpack-dev-server
+npm start
+(webpack-dev-server --devtool eval --progress --colors --hot)
 ```
 
-Pack
+Pack and Watch
 ---
  
 ```
-node_modules/.bin/webpack
+npm run build
+(webpack --watch)
 ```
