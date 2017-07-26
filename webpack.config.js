@@ -46,7 +46,11 @@ module.exports = {
           // art-template options (if necessary)
           // @see https://github.com/aui/art-template
         }
-      },      
+      },
+      { 
+        test: /\.jpg$/, 
+        loader: "file-loader" 
+      }
     ],
   },
   plugins: [
@@ -57,7 +61,6 @@ module.exports = {
     ...getPlugins('./src/views/**/**.html'),
     new extractTextWebpackPlugin({
       filename: (getPath) =>{
-        console.log(getPath('./css/[name].css'));
         return getPath('./css/[name].css').replace('./dist/./css','./css')
       },
       allChunks:true 
