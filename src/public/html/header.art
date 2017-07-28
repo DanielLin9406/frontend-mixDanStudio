@@ -1,7 +1,9 @@
 <div class="header">
     <label for="menuControl" class="menuControlBtn"><i class="fa fa-bars"></i></label>
     <div class="logobgc">
-        <div class="logo first"></div>
+        <div class="logo first">
+            <a href="index.html"></a>
+        </div>
     </div>
     <div class="navbgc">
         <div class="nav first">

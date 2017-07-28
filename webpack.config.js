@@ -5,7 +5,8 @@ const htmlWebpackPlugin = require('html-webpack-plugin');
 const extractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
-const entries = getEntry('./src/views/**/**.js');
+// const entries = getEntry('./src/views/**/**.js');
+// console.log(entries);
 module.exports = {
   // context: path.resolve(__dirname, './src'),
   // entry: entries,
@@ -39,6 +40,7 @@ module.exports = {
           fallback: 'style-loader'
         })
       },
+
       {
         test: /\.art$/,
         loader: "art-template-loader",
@@ -48,8 +50,14 @@ module.exports = {
         }
       },
       { 
-        test: /\.jpg$/, 
+        test: /\.(svg| jpg |png)$/, 
         loader: "file-loader" 
+      },
+      {
+        test: /\.json$/,
+        use: [
+          { loader: 'json-loader' }
+        ]
       }
     ],
   },
