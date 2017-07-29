@@ -3,7 +3,10 @@ const webpack = require('webpack');
 const glob = require('glob');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const extractTextWebpackPlugin = require('extract-text-webpack-plugin');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const browserSyncPlugin = require('browser-sync-webpack-plugin'); //瀏覽器同步更新 webpack --watch
+// const manifestPlugin = require('webpack-manifest-plugin'); //hash code
+const cleanWebpackPlugin = require('clean-webpack-plugin'); //清除dist資料夾
+// const webpackChunkHash = require("webpack-chunk-hash"); 
 
 // const entries = getEntry('./src/views/**/**.js');
 // console.log(entries);
@@ -13,13 +16,13 @@ module.exports = {
   entry: {
     //app: './main.js',
     //Multiple files, bundled together
-    vendor: './src/vendor',
+    vendor: './src/vendor.js',
     index:'./src/views/index/index',
     photowork: './src/views/photowork/photowork',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'js/[name].js',
+    filename: './js/[name].js'
   },
   // devServer:{
   //   contentBase: path.resolve(__dirname, './src'),
@@ -40,7 +43,6 @@ module.exports = {
           fallback: 'style-loader'
         })
       },
-
       {
         test: /\.art$/,
         loader: "art-template-loader",
@@ -51,20 +53,21 @@ module.exports = {
       },
       { 
         test: /\.(svg| jpg |png)$/, 
-        loader: "file-loader" 
+        loader: "file-loader",
+        options:{
+          name:'[name].[hash].[ext]'
+        } 
       },
       {
         test: /\.json$/,
-        use: [
-          { loader: 'json-loader' }
-        ]
+        loader: 'json-loader'
       }
     ],
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
-      names: ['common','vendor'],
-      minChunks: 2
+      names: ['vendor', 'manifest'], // vendor libs + extracted manifest
+      minChunks: Infinity
     }),
     ...getPlugins('./src/views/**/**.html'),
     new extractTextWebpackPlugin({
@@ -73,13 +76,20 @@ module.exports = {
       },
       allChunks:true 
     }),
-    new BrowserSyncPlugin({
+    new browserSyncPlugin({
       // browse to http://localhost:3000/ during development, 
       // ./public directory is being served 
       host: 'localhost',
       port: 3000,
       server: { baseDir: ['dist'] }
-    })    
+    }),
+    // new webpackChunkHash(),
+    // new manifestPlugin({
+    //   fileName: 'hashMapping.json',
+    //   manifestVariable: "webpackManifest",
+    //   inlineManifest: true
+    // }),
+    new cleanWebpackPlugin(['dist'])
   ],
   resolve: {
     modules: [path.resolve(__dirname, './src'), 'node_modules']

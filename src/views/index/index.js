@@ -4,14 +4,7 @@ require('./index.scss');
 require('../../public/js/header.js');
 require('../../public/js/footer.js');
 // load lib
-// var moment = require('moment');
-
-//import header
-const header_bgc = document.querySelector('.header_bgc');
-if (typeof document === 'object') {
-    header_bgc.innerHTML = html;
-}
-
-
+const moment = require('moment');
+const _ = require('lodash');
 
 module.exports = "index";
