@@ -1,4 +1,17 @@
-@import "../../public/sass/_sass-flexbox.scss";
-@import "../../public/sass/_reset.scss";
-@import "../../public/sass/_base.scss";
+@import "../../public/sass/header.scss";
 
+.nav{
+    ul{
+        li{
+            &:nth-child(2){
+                a{
+                    box-shadow: 0 -3px 0 #E11F89 inset; 
+                    -webkit-transition: padding .75s;
+                    -moz-transition: padding .75s;
+                    -o-transition: padding .75s;
+                    transition: padding .75s;                    
+                }
+            }
+        }
+    }
+}

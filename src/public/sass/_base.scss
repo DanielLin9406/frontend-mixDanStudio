@@ -4,4 +4,64 @@ body{
 	text-align:center;
 	background-color:#F9F9F9;
 	font-family:"Microsoft YaHei";
+	#loading{
+
+	}
+    #menuControl{
+		position:absolute;
+		left:-100000px;
+		display:none;
+    }
+    #searchControl{
+		position:absolute;
+		left:-100000px;
+		visibility: hidden;
+        &:hover{
+            cursor:pointer;
+        }
+        &:checked{
+            #body_bgc{
+				>.header_bgc{
+					>.header{
+						>.navbgc{
+							>.nav{
+								>ul{
+									li{
+										&:nth-child(7){
+											ul{
+												top:135%;
+												opacity:1;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+        }
+    }
+
+	#body_bgc{
+		width: 100%;
+		margin:auto;
+		.headerspace{
+			width:100%;	
+			height:0;
+			padding-bottom:6.5%;
+		}
+		header.header_bgc{
+			width:100%;	
+			height:0;
+			padding-bottom:6.5%;
+			position:fixed;
+			top:0;
+			left:0;
+			right:0;
+			margin: auto;		
+			z-index:2000;
+			transition: .75s;			
+		}
+	}
 }

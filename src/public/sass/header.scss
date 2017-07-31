@@ -1,0 +1,318 @@
+@import "../../public/sass/_sass-flexbox.scss";
+@import "../../public/sass/_reset.scss";
+@import "../../public/sass/_base.scss";
+
+
+.logo img{
+    width:100%;	
+}
+
+.header{
+    width:80%;
+    height: 0;
+    margin: auto;
+    padding-bottom:6.5%;
+    transition: .75s;
+    background-color:#f9f9f9;
+    .menuControlBtn{
+        display:none;        
+    }
+    .logobgc{
+        .logo{
+            height:0;
+            padding-bottom:5.5%;
+            transition: .75s;
+            background-color:#f9f9f9;
+            width:25.197917%;
+            position:relative;
+            float:left;
+		    transition: .75s;
+            a{
+                img{
+                    transition: width .75s;
+                }  
+            }
+            
+        }
+    }
+    .navbgc{
+        width: 100%;
+        .nav{
+            width:73.802083%;
+            color:#1E1F25;
+            height:0;
+            padding-bottom:5.5%;
+            transition: .75s;
+            background-color:#f9f9f9;
+            float:left;
+            transition: .75s; 
+            ul{
+                li{
+                    width:14.2857143%;
+                    height:0;
+                    padding-bottom:11.009289595%;
+                    float:left;
+                    position:relative;
+                    font-size: 1.3vw;
+                    transition: all .75s;
+                    a{
+                        letter-spacing:0.05em;
+                        text-align:center;
+                        display:block;
+                        width:90%;
+                        height:25%;
+                        padding:29% 0;
+                        position:absolute;
+                        top:0;
+                        bottom:0;
+                        left:0;
+                        right:0;
+                        margin:auto;
+                        -webkit-transition: padding .75s;
+                        -moz-transition: padding .75s;
+                        -o-transition: padding .75s;
+                        transition: padding .75s;
+                        &:before{
+                            content:'';
+                            display:block;
+                            position:absolute;
+                            left:0;
+                            right:0;
+                            margin: auto;
+                            width: 0%;
+                            height: 63%;
+                            box-shadow: 0 -3px 0 #E11F89 inset; 
+                            -webkit-transition: .75s;
+                            -moz-transition: .75s;
+                            -o-transition: .75s;
+                            transition: .75s;                            
+                        }
+                        &:hover{
+                            &:before{
+                                width: 100%;
+                                box-shadow: 0 -3px 0 #E11F89 inset; 
+                                -webkit-transition: .75s;
+                                -moz-transition: .75s;
+                                -o-transition: .75s;
+                                transition: .75s;                                
+                            }
+                        }                    
+                    }
+                    +li{
+                        &:before{
+                            content:' / ';
+                            display:block;
+                            font-size: 15px;
+                            color:#DEDEDE;
+                            position:absolute;
+                            top:0;
+                            bottom:0;
+                            margin:auto;
+                            left:-4%;
+                            height:25%;
+                            padding:23% 0;                                
+                        }
+                    }
+                    &:nth-child(2){
+                        &:before{
+                            content:'';
+                            display:block;
+                        }
+                    }
+                    &:nth-child(4){
+                        position:relative;
+                        ul{
+                            width:90%;
+                            height:170%;
+                            position:absolute;
+                            z-index:1;
+                            left:0;
+                            right:0;
+                            top:-150px;
+                            margin:auto;
+                            transition: .75s;
+                            li{
+                                width:100%;
+                                height:50%;
+                                padding:0;
+                                a{
+                                    display:block;
+                                    width:100%;
+                                    height:24%;
+                                    padding:28% 0;
+                                    position:relative;
+                                    z-index:2;
+                                    background-color: #f9f9f9;                                        
+                                }                                    
+                            }                                
+                        }
+                        >a{
+                            z-index:5;
+                            background-color: #f9f9f9;
+                            transition: padding .75s;
+                            &:before{
+                                display:none;
+                            }                                
+                        }
+                        &:hover{
+                            ul{
+                                display:block;
+                                top:100%;
+                                z-index:1;
+                                transition: .75s;                                    
+                            }
+                        }
+                    }
+                    &:nth-child(5){
+                        z-index:5;
+                        background-color: #f9f9f9;
+                        transition: padding .75s;                            
+                    }
+                    &:nth-child(6){
+                        z-index:5;
+                        background-color: #f9f9f9;
+                        transition: padding .75s;                            
+                    }                        
+                    &:nth-child(7){
+                        ul{
+                            width:280%;
+                            height:0;
+                            padding-bottom: 50%;
+                            position:absolute;
+                            z-index:1;
+                            right:12%;
+                            top:-100px;
+                            opacity:0;
+                            margin:auto;
+                            transition: .75s;
+                            background-color: #e8e8e8;
+                            &:after{
+                                display:block;
+                                content:'';
+                                position:absolute;
+                                z-index:2001;
+                                top:-15px;
+                                right:25px;
+                                border-bottom:20px solid #e8e8e8;
+                                border-left:20px solid transparent;
+                                border-right:20px solid transparent;                   
+                            }                    
+                        }
+                        >label{
+                            z-index:5;
+                            background-color: #f9f9f9;
+                            transition: padding .75s;                                
+                        }                           
+                    }
+                    &:last-child{
+                        &:before{
+                            content:'';
+                            display:block;                                
+                        }
+                    }
+                    label.serachControlBtn{
+                        letter-spacing:0.05em;
+                        text-align:center;
+                        display:block;
+                        z-index:5;
+                        width: 100%;
+                        height:25%;
+                        padding:29% 0;
+                        position:absolute;
+                        top:0;
+                        bottom:0;
+                        left:0;
+                        right:0;
+                        margin:auto;
+                        -webkit-transition: padding .75s;
+                        -moz-transition: padding .75s;
+                        -o-transition: padding .75s;
+                        transition: padding .75s;
+                        ul{
+                            li{
+                                input{
+                                    &[type="text"]{
+                                        font-size: 20px;
+                                        position:absolute;
+                                        border:none;
+                                        width: 100%;
+                                        height: 110%;
+                                        background-color: #f9f9f9;                                        
+                                    }
+                                }
+                                i{
+                                    font-size: 20px;
+                                    border:none;
+                                    width: 100%;
+                                    height: 100%;
+                                    position:absolute;
+                                    text-align: center;
+                                    background-color: #f9f9f9;
+                                    outline:1px solid #1E1F25;
+                                    &:before{
+                                        display:block;
+                                        width: 100%;
+                                        height: 64%;
+                                        position:absolute;
+                                        top:0;
+                                        right:0;
+                                        left:0;
+                                        bottom:0;
+                                        margin:auto;                                    
+                                    }            
+                                }
+                                &:first-child{
+                                    width: 70%;
+                                    height: 55%;
+                                    position:absolute;
+                                    margin: auto 1.65% auto 3.3%;
+                                    top:0;
+                                    bottom:0;
+                                    padding-bottom: 0;
+                                    text-align: left;
+                                }
+                                &:last-child{
+                                    width: 20%;
+                                    height: 55%;
+                                    position:absolute;
+                                    right:0;
+                                    top:0;
+                                    bottom:0;
+                                    margin: auto 3.3% auto 1.65%;
+                                    padding-bottom: 0;
+                                    text-align: left;                
+                                }
+                            }
+                        }                       
+                        &:hover{
+                            cursor:pointer;
+                            &:before{
+                                width: 100%;
+                                box-shadow: 0 -3px 0 #E11F89 inset; 
+                                -webkit-transition: .75s;
+                                -moz-transition: .75s;
+                                -o-transition: .75s;
+                                transition: .75s;                  
+                            }
+                        }
+                        &:before{
+                            content:'';
+                            display:block;
+                            position:absolute;
+                            left:0;
+                            right:0;
+                            margin: auto;
+                            width: 0%;
+                            height: 63%;
+                            box-shadow: 0 -3px 0 #E11F89 inset; 
+                            -webkit-transition: .75s;
+                            -moz-transition: .75s;
+                            -o-transition: .75s;
+                            transition: .75s;          
+                        }                                                 
+                    }                    
+                }
+            }
+        }
+    }    
+}
