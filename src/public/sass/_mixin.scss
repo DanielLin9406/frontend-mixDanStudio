@@ -1,0 +1,53 @@
+bgc{
+    @at-root{
+        %#{&} {
+            background-color:#f9f9f9;
+        }
+        %#{&}-white{
+            background-color:#e8e8e8;
+        }        
+
+    }
+}
+
+position{
+    @at-root{
+        %#{&}-absolute {
+            position:absolute;
+            top:0;
+            bottom:0;
+            left:0;
+            right:0;
+            margin:auto;
+        }
+        %#{&}-horizontal{
+            position:absolute;
+            left:0;
+            right:0;
+            margin:auto;
+        }
+        %#{&}-vertical{
+            position:absolute;
+            top:0;
+            bottom:0;
+            margin:auto;
+        }
+    }
+}
+
+transition{
+    @at-root{
+        %#{&}-one { 
+            -webkit-transition: .75s;
+            -moz-transition: .75s;
+            -o-transition: .75s;
+            transition: .75s;              
+        }
+        %#{&}-two { 
+            -webkit-transition:padding .75s;
+            -moz-transition:padding .75s;
+            -o-transition:padding .75s;
+            transition:padding .75s;              
+        }
+    }
+}

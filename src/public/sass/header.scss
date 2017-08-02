@@ -1,4 +1,5 @@
 @import "../../public/sass/_sass-flexbox.scss";
+@import "../../public/sass/_mixin.scss";
 @import "../../public/sass/_reset.scss";
 @import "../../public/sass/_base.scss";
 
@@ -13,7 +14,7 @@
     margin: auto;
     padding-bottom:6.5%;
     transition: .75s;
-    background-color:#f9f9f9;
+    @extend %bgc;
     .menuControlBtn{
         display:none;        
     }
@@ -22,14 +23,13 @@
             height:0;
             padding-bottom:5.5%;
             transition: .75s;
-            background-color:#f9f9f9;
+            @extend %bgc;
             width:25.197917%;
             position:relative;
             float:left;
-		    transition: .75s;
             a{
                 img{
-                    transition: width .75s;
+                    transition: .75s;
                 }  
             }
             
@@ -43,7 +43,7 @@
             height:0;
             padding-bottom:5.5%;
             transition: .75s;
-            background-color:#f9f9f9;
+            @extend %bgc;
             float:left;
             transition: .75s; 
             ul{
@@ -62,39 +62,22 @@
                         width:90%;
                         height:25%;
                         padding:29% 0;
-                        position:absolute;
-                        top:0;
-                        bottom:0;
-                        left:0;
-                        right:0;
-                        margin:auto;
-                        -webkit-transition: padding .75s;
-                        -moz-transition: padding .75s;
-                        -o-transition: padding .75s;
-                        transition: padding .75s;
+                        @extend %position-absolute;
+                        @extend %transition-two;
                         &:before{
                             content:'';
                             display:block;
-                            position:absolute;
-                            left:0;
-                            right:0;
-                            margin: auto;
+                            @extend %position-horizontal;
                             width: 0%;
                             height: 63%;
                             box-shadow: 0 -3px 0 #E11F89 inset; 
-                            -webkit-transition: .75s;
-                            -moz-transition: .75s;
-                            -o-transition: .75s;
-                            transition: .75s;                            
+                            @extend %transition-one;                           
                         }
                         &:hover{
                             &:before{
                                 width: 100%;
                                 box-shadow: 0 -3px 0 #E11F89 inset; 
-                                -webkit-transition: .75s;
-                                -moz-transition: .75s;
-                                -o-transition: .75s;
-                                transition: .75s;                                
+                                @extend %transition-one;
                             }
                         }                    
                     }
@@ -104,10 +87,7 @@
                             display:block;
                             font-size: 15px;
                             color:#DEDEDE;
-                            position:absolute;
-                            top:0;
-                            bottom:0;
-                            margin:auto;
+                            @extend %position-vertical;
                             left:-4%;
                             height:25%;
                             padding:23% 0;                                
@@ -124,12 +104,9 @@
                         ul{
                             width:90%;
                             height:170%;
-                            position:absolute;
                             z-index:1;
-                            left:0;
-                            right:0;
+                            @extend %position-horizontal;
                             top:-150px;
-                            margin:auto;
                             transition: .75s;
                             li{
                                 width:100%;
@@ -142,13 +119,13 @@
                                     padding:28% 0;
                                     position:relative;
                                     z-index:2;
-                                    background-color: #f9f9f9;                                        
+                                    @extend %bgc;                                        
                                 }                                    
                             }                                
                         }
                         >a{
                             z-index:5;
-                            background-color: #f9f9f9;
+                            @extend %bgc;
                             transition: padding .75s;
                             &:before{
                                 display:none;
@@ -165,12 +142,12 @@
                     }
                     &:nth-child(5){
                         z-index:5;
-                        background-color: #f9f9f9;
+                        @extend %bgc;
                         transition: padding .75s;                            
                     }
                     &:nth-child(6){
                         z-index:5;
-                        background-color: #f9f9f9;
+                        @extend %bgc;
                         transition: padding .75s;                            
                     }                        
                     &:nth-child(7){
@@ -200,7 +177,7 @@
                         }
                         >label{
                             z-index:5;
-                            background-color: #f9f9f9;
+                            @extend %bgc;
                             transition: padding .75s;                                
                         }                           
                     }
@@ -218,16 +195,8 @@
                         width: 100%;
                         height:25%;
                         padding:29% 0;
-                        position:absolute;
-                        top:0;
-                        bottom:0;
-                        left:0;
-                        right:0;
-                        margin:auto;
-                        -webkit-transition: padding .75s;
-                        -moz-transition: padding .75s;
-                        -o-transition: padding .75s;
-                        transition: padding .75s;
+                        @extend %position-absolute;
+                        @extend %transition-two;
                         ul{
                             li{
                                 input{
@@ -237,7 +206,7 @@
                                         border:none;
                                         width: 100%;
                                         height: 110%;
-                                        background-color: #f9f9f9;                                        
+                                        @extend %bgc;                                        
                                     }
                                 }
                                 i{
@@ -247,37 +216,27 @@
                                     height: 100%;
                                     position:absolute;
                                     text-align: center;
-                                    background-color: #f9f9f9;
+                                    @extend %bgc;
                                     outline:1px solid #1E1F25;
                                     &:before{
                                         display:block;
                                         width: 100%;
                                         height: 64%;
-                                        position:absolute;
-                                        top:0;
-                                        right:0;
-                                        left:0;
-                                        bottom:0;
-                                        margin:auto;                                    
+                                        @extend %position-absolute;
                                     }            
                                 }
                                 &:first-child{
                                     width: 70%;
                                     height: 55%;
-                                    position:absolute;
+                                    @extend %position-vertical;
                                     margin: auto 1.65% auto 3.3%;
-                                    top:0;
-                                    bottom:0;
                                     padding-bottom: 0;
                                     text-align: left;
                                 }
                                 &:last-child{
                                     width: 20%;
                                     height: 55%;
-                                    position:absolute;
-                                    right:0;
-                                    top:0;
-                                    bottom:0;
+                                    @extend %position-vertical;
                                     margin: auto 3.3% auto 1.65%;
                                     padding-bottom: 0;
                                     text-align: left;                
@@ -289,26 +248,17 @@
                             &:before{
                                 width: 100%;
                                 box-shadow: 0 -3px 0 #E11F89 inset; 
-                                -webkit-transition: .75s;
-                                -moz-transition: .75s;
-                                -o-transition: .75s;
-                                transition: .75s;                  
+                                @extend %transition-one;
                             }
                         }
                         &:before{
                             content:'';
                             display:block;
-                            position:absolute;
-                            left:0;
-                            right:0;
-                            margin: auto;
+                            @extend %position-horizontal;
                             width: 0%;
                             height: 63%;
                             box-shadow: 0 -3px 0 #E11F89 inset; 
-                            -webkit-transition: .75s;
-                            -moz-transition: .75s;
-                            -o-transition: .75s;
-                            transition: .75s;          
+                            @extend %transition-one;
                         }                                                 
                     }                    
                 }
