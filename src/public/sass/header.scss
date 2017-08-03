@@ -9,27 +9,23 @@
 }
 
 .header{
-    width:80%;
-    height: 0;
-    margin: auto;
-    padding-bottom:6.5%;
-    transition: .75s;
+    @include ratio-box(80%,0,6.5%);
+    @extend %transition-one;
     @extend %bgc;
+    margin: auto;
     .menuControlBtn{
         display:none;        
     }
     .logobgc{
         .logo{
-            height:0;
-            padding-bottom:5.5%;
-            transition: .75s;
+            @include ratio-box(25.197917%,0,5.5%);
+            @extend %transition-one;
             @extend %bgc;
-            width:25.197917%;
             position:relative;
             float:left;
             a{
                 img{
-                    transition: .75s;
+                    @extend %transition-one;
                 }  
             }
             
@@ -38,95 +34,79 @@
     .navbgc{
         width: 100%;
         .nav{
-            width:73.802083%;
-            color:#1E1F25;
-            height:0;
-            padding-bottom:5.5%;
-            transition: .75s;
+            @include ratio-box(73.802083%,0,5.5%);
+            @extend %transition-one;
             @extend %bgc;
+            color:#1E1F25;
             float:left;
-            transition: .75s; 
+            @extend %transition-one; 
             ul{
                 li{
-                    width:14.2857143%;
-                    height:0;
-                    padding-bottom:11.009289595%;
+                    @include ratio-box(14.2857143%,0,11.009289595%);
                     float:left;
                     position:relative;
                     font-size: 1.3vw;
-                    transition: all .75s;
+                    @extend %transition-three;
                     a{
                         letter-spacing:0.05em;
                         text-align:center;
                         display:block;
-                        width:90%;
-                        height:25%;
-                        padding:29% 0;
+                        @include padding-box(90%,25%,29%,0);
                         @extend %position-absolute;
                         @extend %transition-two;
                         &:before{
-                            content:'';
-                            display:block;
+                            @extend %pseudoSet;
                             @extend %position-horizontal;
-                            width: 0%;
-                            height: 63%;
-                            box-shadow: 0 -3px 0 #E11F89 inset; 
+                            @include padding-box(0%,63%,0,0);
+                            @extend %boxShadow-one; 
                             @extend %transition-one;                           
                         }
                         &:hover{
                             &:before{
                                 width: 100%;
-                                box-shadow: 0 -3px 0 #E11F89 inset; 
+                                @extend %boxShadow-one; 
                                 @extend %transition-one;
                             }
                         }                    
                     }
                     +li{
                         &:before{
-                            content:' / ';
-                            display:block;
+                            @include presudoSet(' / ');
                             font-size: 15px;
                             color:#DEDEDE;
                             @extend %position-vertical;
                             left:-4%;
-                            height:25%;
-                            padding:23% 0;                                
+                            @include padding-box(auto,25%,23%,0);                               
                         }
                     }
                     &:nth-child(2){
                         &:before{
-                            content:'';
-                            display:block;
+                            @extend %pseudoSet;
                         }
                     }
                     &:nth-child(4){
                         position:relative;
                         ul{
-                            width:90%;
-                            height:170%;
-                            z-index:1;
+                            @include padding-box(90%,170%,0,0);
                             @extend %position-horizontal;
+                            @extend %transition-one;
                             top:-150px;
-                            transition: .75s;
+                            z-index:1;
                             li{
-                                width:100%;
-                                height:50%;
-                                padding:0;
+                                @include padding-box(100%,50%,0,0);
                                 a{
+                                    @extend %bgc;                                        
+                                    @include padding-box(100%,24%,28%,0);
                                     display:block;
-                                    width:100%;
-                                    height:24%;
-                                    padding:28% 0;
                                     position:relative;
                                     z-index:2;
-                                    @extend %bgc;                                        
                                 }                                    
                             }                                
                         }
                         >a{
-                            z-index:5;
                             @extend %bgc;
-                            transition: padding .75s;
+                            @extend %transition-two;
+                            z-index:5;
                             &:before{
                                 display:none;
                             }                                
@@ -136,36 +116,33 @@
                                 display:block;
                                 top:100%;
                                 z-index:1;
-                                transition: .75s;                                    
+                                @extend %transition-one;                                    
                             }
                         }
                     }
                     &:nth-child(5){
                         z-index:5;
                         @extend %bgc;
-                        transition: padding .75s;                            
+                        @extend %transition-two;                            
                     }
                     &:nth-child(6){
                         z-index:5;
                         @extend %bgc;
-                        transition: padding .75s;                            
+                        @extend %transition-two;                            
                     }                        
                     &:nth-child(7){
                         ul{
-                            width:280%;
-                            height:0;
-                            padding-bottom: 50%;
+                            @include ratio-box(280%,0,50%);
                             position:absolute;
                             z-index:1;
                             right:12%;
                             top:-100px;
                             opacity:0;
                             margin:auto;
-                            transition: .75s;
-                            background-color: #e8e8e8;
+                            @extend %transition-one;
+                            @extend %bgc-white;
                             &:after{
-                                display:block;
-                                content:'';
+                                @extend %pseudoSet;
                                 position:absolute;
                                 z-index:2001;
                                 top:-15px;
@@ -178,13 +155,12 @@
                         >label{
                             z-index:5;
                             @extend %bgc;
-                            transition: padding .75s;                                
+                            @extend %transition-two;                                
                         }                           
                     }
                     &:last-child{
                         &:before{
-                            content:'';
-                            display:block;                                
+                            @extend %pseudoSet;                               
                         }
                     }
                     label.serachControlBtn{
@@ -192,9 +168,7 @@
                         text-align:center;
                         display:block;
                         z-index:5;
-                        width: 100%;
-                        height:25%;
-                        padding:29% 0;
+                        @include padding-box(100%,25%,29%,0);
                         @extend %position-absolute;
                         @extend %transition-two;
                         ul{
@@ -204,41 +178,34 @@
                                         font-size: 20px;
                                         position:absolute;
                                         border:none;
-                                        width: 100%;
-                                        height: 110%;
+                                        @include padding-box(100%,110%,0,0);
                                         @extend %bgc;                                        
                                     }
                                 }
                                 i{
                                     font-size: 20px;
                                     border:none;
-                                    width: 100%;
-                                    height: 100%;
+                                    @include padding-box(100%,100%,0,0);
                                     position:absolute;
                                     text-align: center;
                                     @extend %bgc;
                                     outline:1px solid #1E1F25;
                                     &:before{
                                         display:block;
-                                        width: 100%;
-                                        height: 64%;
+                                        @include padding-box(100%,64%,0,0);
                                         @extend %position-absolute;
                                     }            
                                 }
                                 &:first-child{
-                                    width: 70%;
-                                    height: 55%;
+                                    @include ratio-box(70%,55%,0);
                                     @extend %position-vertical;
                                     margin: auto 1.65% auto 3.3%;
-                                    padding-bottom: 0;
                                     text-align: left;
                                 }
                                 &:last-child{
-                                    width: 20%;
-                                    height: 55%;
+                                    @include ratio-box(20%,55%,0);
                                     @extend %position-vertical;
                                     margin: auto 3.3% auto 1.65%;
-                                    padding-bottom: 0;
                                     text-align: left;                
                                 }
                             }
@@ -247,17 +214,15 @@
                             cursor:pointer;
                             &:before{
                                 width: 100%;
-                                box-shadow: 0 -3px 0 #E11F89 inset; 
+                                @extend %boxShadow-one; 
                                 @extend %transition-one;
                             }
                         }
                         &:before{
-                            content:'';
-                            display:block;
+                            @extend %pseudoSet;
                             @extend %position-horizontal;
-                            width: 0%;
-                            height: 63%;
-                            box-shadow: 0 -3px 0 #E11F89 inset; 
+                            @include padding-box(0%,63%,0,0);
+                            @extend %boxShadow-one; 
                             @extend %transition-one;
                         }                                                 
                     }                    

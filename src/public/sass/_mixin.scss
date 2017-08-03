@@ -49,5 +49,41 @@ transition{
             -o-transition:padding .75s;
             transition:padding .75s;              
         }
+        %#{&}-three { 
+            -webkit-transition:all .75s;
+            -moz-transition:all .75s;
+            -o-transition:all .75s;
+            transition:all .75s;              
+        }        
     }
+}
+
+boxShadow{
+    @at-root{
+        %#{&}-one { 
+            box-shadow: 0 -3px 0 #E11F89 inset;
+        }
+    }
+}
+
+%pseudoSet{
+    content:'';
+    display:block;
+}
+
+@mixin presudoSet($symbol){
+    content:$symbol;
+    display:block;
+}
+
+@mixin ratio-box($width,$height,$paddingBottom){
+    width:$width;
+    height:$height;
+    padding-bottom:$paddingBottom;
+}
+
+@mixin padding-box($width,$height,$veritcal,$horizontal){
+    width:$width;
+    height:$height;
+    padding:$veritcal $horizontal;
 }
