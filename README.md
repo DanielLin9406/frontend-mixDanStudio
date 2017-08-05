@@ -8,11 +8,12 @@ Run Server
 ---
  
 ```
-npm start
-(webpack-dev-server --devtool eval --progress --colors --hot)
+npm run dev
+(webpack-dev-server --devtool eval --progress --colors --inline --hot --content-base dist/ --config webpack.config.dev.js)
+-> http://localhost:8080/webpack-dev-server/(pageName)
 ```
 
-Pack and Watch
+Pack, Watch and Uglify
 ---
  
 ```

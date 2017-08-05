@@ -4,18 +4,17 @@ const glob = require('glob');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const extractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const browserSyncPlugin = require('browser-sync-webpack-plugin'); //瀏覽器同步更新 webpack --watch
-// const manifestPlugin = require('webpack-manifest-plugin'); //hash code
 const cleanWebpackPlugin = require('clean-webpack-plugin'); //清除dist資料夾
+const uglifyJSPlugin = require('uglifyjs-webpack-plugin'); //去空白行最小化
+// const manifestPlugin = require('webpack-manifest-plugin'); //hash code
 // const webpackChunkHash = require("webpack-chunk-hash"); 
-
 // const entries = getEntry('./src/views/**/**.js');
-// console.log(entries);
+
 module.exports = {
   // context: path.resolve(__dirname, './src'),
   // entry: entries,
   entry: {
     //app: './main.js',
-    //Multiple files, bundled together
     vendor: './src/vendor.js',
     index:'./src/views/index/index',
     photowork: './src/views/photowork/photowork',
@@ -24,9 +23,6 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: './js/[name].js'
   },
-  // devServer:{
-  //   contentBase: path.resolve(__dirname, './src'),
-  // },
   module: {
     loaders: [
       {
@@ -89,7 +85,8 @@ module.exports = {
     //   manifestVariable: "webpackManifest",
     //   inlineManifest: true
     // }),
-    new cleanWebpackPlugin(['dist'])
+    new cleanWebpackPlugin(['dist']),
+    new uglifyJSPlugin(),
   ],
   resolve: {
     modules: [path.resolve(__dirname, './src'), 'node_modules']
