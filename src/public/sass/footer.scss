@@ -1,80 +1,216 @@
 @import "../../public/sass/_reset.scss";
+@import "../../public/sass/_media.scss";
 @import "../../public/sass/_mixin.scss";
 
 .footer_info{
     width:100%;
     margin:auto;
     font-size: 0;
-    .footer_logo{
-
-        .vam{}
-        a{
-            img{
-
-            }
+    .footer{
+        height:0;
+        display:inline-block;
+        vertical-align:top;
+        @include pc-width{
+            width: 12%;
+            margin:2% 0;
+            padding-bottom: 10%;
+            font-size: 13px;
         }
-    }
-    .footer_services{
+        @include pad-width{
+            width: 12%;
+            margin:2% 0;
+            padding-bottom: 10%;
+            font-size: 11px;
+        }
+        @include phone-width{
+            width: 24%;
+            margin:5% 0;
+            padding-bottom: 15%;
+            font-size: 9px;
+        }
         h2{
-
+            color:#898989;
+            font-weight:100;
+            text-align: center;
+            margin-bottom: 5%;
+            @include pc-width{
+                font-size: 1.2vw;
+            }
+            @include pad-width{
+                font-size: 1.3vw;
+            }
+            @include phone-width{
+                font-size: 11px;
+            }            
         }
-        ul{
-            li{
+
+        +.footer{
+            border-left:1px solid #DEDEDE;   
+        }
+        +.follow{
+            @include pc-width{
 
             }
-        }
-    }
-    .footer_works{
-        h2{
+            @include pad-width{
+                border-left:1px solid #DEDEDE;
+            }
+            @include phone-width{
+                width: 100%;
+                margin:0;
+                padding-bottom:1%;
+                border-left:0px solid #fff;                
+            }             
+            h2{
+                @include pc-width{
 
-        }
-        ul{
-            li{
-                
+                }
+                @include pad-width{
+
+                }
+                @include phone-width{
+                    color:#898989;
+                    font-weight:100;
+                    text-align: center;
+                    margin-bottom: 2%;              
+                }
             }
         }
-    }
-    .footer_brand{
-        h2{
-
-        }
-        ul{
-            li{
-
+        li{
+            text-align: center; 
+            @include pc-width{
+                margin:7% 0;              
+            }
+            @include pad-width{
+                margin:8% 0;
+            }
+            @include phone-width{
+                margin:6% 0;
+            }            
+            a{
+                color:#1E1F25;
+                @include pc-width{
+                    font-size: 1.4vw;                   
+                }
+                @include pad-width{
+                    font-size: 1.6vw;
+                }
+                @include phone-width{
+                    font-size: 2.5vw;
+                } 
             }
         }
-    }
-    .footer_bis{
-        h2{
 
-        }
-        ul{
-            li{
-
-            }
-        }
     }
     .follow{
+        @include pc-width{
+            width: 26%;
+            vertical-align:middle;
+        }
+        @include pad-width{
+            width: 26%;
+            vertical-align:middle;
+        }
+        @include phone-width{
+        
+        }        
         h2{
-
+            color:#898989;
+            font-weight:100;
+            text-align: center;
+            margin-bottom: 4.5%;            
         }
         .follow_social{
-            .vam2{
+            width: 70%;
+            margin: auto;
+            font-size: 0; 
+            div~a>div{
+                width:25%;
+                box-sizing:border-box;
+                display:inline-block;
+                vertical-align:middle;
+                @include pc-width{
 
-            }
-            a{
-                div{
-                    img{
-
-                    }
                 }
+                @include pad-width{
+                    padding:0 2%;
+                }
+                @include phone-width{
+                    padding:0 2%;                      
+                }                        
+            }
+            img{
+                width: 100%;
+                background-color: #626161;
+                border:1px solid #C0C0C0;
+            }
+            .vam2{
+                width: 0;
+                height:0;
+                padding-bottom: 10%;
+                display:inline-block;
+                vertical-align:middle;
+            }
+        }
+    }
+    .footer_logo{
+        width: 25%;
+        text-align: center;
+        font-size: 0;
+        @include pc-width{
+            vertical-align:middle;
+        }
+        @include pad-width{
+            vertical-align:middle;
+        }
+        @include phone-width{
+
+            display:none;    
+        }
+        .vam{
+            width: 0;
+            height:0;
+            display:inline-block;
+            vertical-align:middle;
+            @include pc-width{
+                padding-bottom: 25%;
+            }
+            @include pad-width{
+                padding-bottom: 30%;              
+            }
+            @include phone-width{   
+            }            
+        }
+        a{
+            img{
+                width: 80%;
+                display:inline-block;
+                vertical-align:middle;                
             }
         }
     }
 }
 
 .bottom{
-    p{
-
+    width: 100%;
+    height: 0;
+    letter-spacing:0.15em;
+    text-align: center;
+    color:#fff;
+    background-color: #626161;
+    @include pc-width{
+        padding-top:0.629167%;
+        padding-bottom: 1.65833%;
+        font-size: 10px;
     }
+    @include pad-width{
+        padding-top:0.629167%;
+        padding-bottom: 2.25833%;
+        font-size: 10px;
+    }  
+    @include phone-width{
+        margin-top:30%;
+        padding-top:0.829167%;
+        padding-bottom: 2.05833%;
+        font-size: 8px;
+    }    
 }

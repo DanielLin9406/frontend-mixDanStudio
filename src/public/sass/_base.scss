@@ -1,3 +1,6 @@
+@import "../../public/sass/_media.scss";
+@import "../../public/sass/_mixin.scss";
+
 body{
 	width:100%;
 	margin:auto;
@@ -29,8 +32,14 @@ body{
 									li{
 										&:nth-child(7){
 											ul{
-												top:135%;
-												opacity:1;
+												@include pc-width{
+													top:135%;
+													opacity:1;
+												}
+												@include pad-width{
+													top:135%;
+													opacity:1;													
+												}
 											}
 										}
 									}
@@ -47,21 +56,27 @@ body{
 		width: 100%;
 		margin:auto;
 		.headerspace{
-			width:100%;	
-			height:0;
-			padding-bottom:6.5%;
+			@include pc-width{
+				@include ratio-box(100%,0,6.5%);
+			}
+			@include pad-width{
+				@include ratio-box(100%,0,17.14808362%);
+			}
 		}
 		header.header_bgc{
-			width:100%;	
-			height:0;
-			padding-bottom:6.5%;
+			@include pc-width{
+				@include ratio-box(100%,0,6.5%);
+			}
+			@include pad-width{
+				@include ratio-box(100%,0,17.14808362%);
+			}
 			position:fixed;
 			top:0;
 			left:0;
 			right:0;
 			margin: auto;		
 			z-index:2000;
-			transition: .75s;			
+			@extend %transition-one;		
 		}
 	}
 }
