@@ -14,17 +14,40 @@
         @include transition(one,0.75s);
         @include bgc;
         margin: auto;
+        @include boxShadow(three);
     }
-    
+    @include phone-width{
+        @include ratio-box(100%,0,16.822430%);
+        position:fixed;
+        top:0;
+        z-index: 400px;
+    }
     .menuControlBtn{
-        display:none;        
+        @include pad2pc-width{
+            display:none;
+        }
+        @include phone-width{
+            display: block;
+            @include position(vertical);
+            @include ratio-box(20%,0,10%);
+            text-align: center;
+            z-index: 500;
+            font-size: 40px;
+            color:#626161;
+        }
     }
     .logobgc{
         @include pad-width{
             width: 100%;
-            background-color:#f9f9f9;
+            @include bgc;
             position:relative;
             z-index:2;            
+        }
+        @include phone-width{
+            @include bgc;
+            @include boxShadow(two);
+            position:relative;
+            z-index: 402;
         }    
         .logo{
             @include pc-width{
@@ -42,15 +65,18 @@
                 margin: auto;
                 z-index:30;
             }
+            @include phone-width{
+                @include ratio-box(51.875%,0,16.822430%);
+                margin:auto;
+            }
             a{
                 img{
-                    @include pc-width{
+                    @include pad2pc-width{
                         width:100%;
-                        @include transition(one,0.75s);	
+                        @include transition(one,0.75s); 
                     }
-                    @include pad-width{
-                        width:100%;
-                        @include transition(one,0.75s);                        
+                    @include phone-width{
+                        width: 100%;
                     }
                 }  
             }
@@ -58,12 +84,14 @@
         }
     }
     .navbgc{
-        @include pc-width{
+        @include pad2pc-width{
             width: 100%;
         }
         @include pad-width{
-            width: 100%;
             @include bgc;
+        }
+        @include phone-width{
+            position:relative;
         }
         .nav{
             @include pc-width{
@@ -79,6 +107,10 @@
                 @include bgc;
                 margin: auto;
                 color:#1E1F25;
+            }
+            @include phone-width{
+                width: 100%;
+                height: 0;
             }
             ul{
                 li{
@@ -98,6 +130,10 @@
                         float:left;
                         position:relative;
                     }
+                    @include phone-width{
+                        text-align: center;
+                        padding:8px 0;
+                    }
                     a{
                         @include pc-width{
                             @include padding-box(90%,25%,29%,0);
@@ -114,52 +150,57 @@
                             text-align:center;
                             display:block;
                         }
+                        @include phone-width{
+                            font-size: 4vw;
+                        }
                         &:before{
-                            @extend %pseudoSet;
-                            @extend %position-horizontal;
-                            @include padding-box(0%,63%,0,0);
-                            @extend %boxShadow-one; 
-                            @extend %transition-one;                           
+                            @include pad2pc-width{
+                                @include presudoSet_default;
+                                @include position(horizontal);
+                                @include padding-box(0%,63%,0,0);
+                                @include boxShadow(one);
+                                @include transition(one,0.75s);
+                            }                         
                         }
                         &:hover{
                             &:before{
-                                width: 100%;
-                                @extend %boxShadow-one; 
-                                @extend %transition-one;
+                                @include pad2pc-width{
+                                    width: 100%;
+                                    @include boxShadow(one);
+                                    @include transition(one,0.75s);
+                                }
                             }
                         }                    
                     }
                     +li{
                         &:before{
-                            @include pc-width{
+                            @include pad2pc-width{
                                 @include padding-box(auto,25%,23%,0);
                                 @include presudoSet(' / ');
                                 @include position(vertical);
-                                color:#DEDEDE;
                                 font-size: 15px;
-                                left:-4%;
+                                left:-4%;                                
                             }
-                            @include pad-width{
-                                @include padding-box(auto,25%,23%,0);                                
-                                @include presudoSet(' / ');
-                                @include position(vertical);
-                                font-size: 15px;
-                                left:-4%;
-                            }                               
+                            @include pc-width{
+                                color:#DEDEDE;
+                            }                             
                         }
                     }
                     &:nth-child(2){
+                        @include phone-width{
+                            display: none;
+                        }                         
                         &:before{
                             @include presudoSet_default;
                         }
                     }
                     &:nth-child(4){
-                        @include pc-width{
+                        @include pad2pc-width{
                             position:relative;
                         }
-                        @include pad-width{
-                            position:relative;
-                        }
+                        @include phone-width{
+                            padding:0;
+                        } 
                         ul{
                             @include pc-width{
                                 @include padding-box(90%,170%,0,0);
@@ -175,86 +216,72 @@
                                 z-index:1;
                             }
                             li{
-                                @include pc-width{
+                                @include pad2pc-width{
                                     @include padding-box(100%,50%,0,0);
                                 }
-                                @include pad-width{
-                                    @include padding-box(100%,50%,0,0);
-                                }
+                                @include phone-width{
+                                    display: block;
+                                    padding:8px 0;
+                                } 
                                 a{
-                                    @include pc-width{
-                                        @include padding-box(100%,24%,28%,0);
+                                    @include pad2pc-width{
                                         @include bgc;
                                         display:block;
                                         position:relative;
                                         z-index:2;
                                     }
+                                    @include pc-width{
+                                        @include padding-box(100%,24%,28%,0);
+                                    }
                                     @include pad-width{
                                         @include padding-box(100%,24%,24%,0);
-                                        @include bgc;
-                                        display:block;
-                                        position:relative;
-                                        z-index:2;
-                                    }                                    
+                                    }
+                                    @include phone-width{
+                                        box-shadow: none;
+                                    }                                                                        
                                 }                                    
                             }                                
                         }
                         >a{
-                            @include pc-width{
+                            @include pad2pc-width{
                                 @include bgc;
-                                @include transition(two,0.75s);
                                 z-index:5;
                             }
-                            @include pad-width{
-                                @include bgc;
-                                z-index:5;
-                            } 
+                            @include pc-width{
+                                @include transition(two,0.75s);
+                            }
+                            @include phone-width{
+                                display: none;
+                            }                            
                             &:before{
-                                display:none;
+                                @include pad2pc-width{
+                                    display:none;
+                                }
                             }                                
                         }
                         &:hover{
                             ul{
-                                @include pc-width{
+                                @include pad2pc-width{
                                     display:block;
                                     top:100%;
                                     z-index:1;
-                                    @include transition(one,0.75s);                               
-                                }
-                                @include pad-width{
-                                    display:block;
-                                    top:100%;
-                                    z-index:1;
-                                    @include transition(one,0.75s);                                     
-                                }     
+                                    @include transition(one,0.75s);  
+                                }    
                             }
                         }
                     }
                     &:nth-child(5),&:nth-child(6){
-                        @include pc-width{
+                        @include pad2pc-width{
                             @include bgc;
-                            @include transition(two,0.75s);
-                            z-index:5;
+                            z-index:5;                            
                         }
-                        @include pad-width{
-                            @include bgc;
-                            z-index:5;
-                        }                           
+                        @include pc-width{
+                            @include transition(two,0.75s);
+                        }                          
                     }                       
                     &:nth-child(7){
                         ul{
-                            @include pc-width{
-                                @include ratio-box(280%,0,50%);
-                                position:absolute;
-                                z-index:1;
-                                right:12%;
-                                top:-100px;
-                                opacity:0;
-                                margin:auto;
-                                @include transition(one,0.75s);
-                                @include bgc-white;
-                            }
-                            @include pad-width{
+                            @include pad2pc-width{
                                 @include ratio-box(280%,0,50%);
                                 position:absolute;
                                 z-index:1;
@@ -266,7 +293,7 @@
                                 @include bgc-white;
                             }
                             &:after{
-                                @include pc-width{
+                                @include pad2pc-width{
                                     @include presudoSet_default;
                                     position:absolute;
                                     z-index:2001;
@@ -275,29 +302,20 @@
                                     border-bottom:20px solid #e8e8e8;
                                     border-left:20px solid transparent;
                                     border-right:20px solid transparent;
-                                }
-                                @include pad-width{
-                                    @include presudoSet_default;
-                                    position:absolute;
-                                    z-index:2001;
-                                    top:-15px;
-                                    right:25px;
-                                    border-bottom:20px solid #e8e8e8;
-                                    border-left:20px solid transparent;
-                                    border-right:20px solid transparent;                                    
                                 }                   
                             }                    
                         }
                         >label{
-                            @include pc-width{
+                            @include pad2pc-width{
                                 @include bgc;
-                                @include transition(two,0.75s);
-                                z-index:5;
+                                z-index:5;                                
                             }
-                            @include pad-width{
-                                @include bgc;
-                                z-index:5;
-                            }                               
+                            @include pc-width{
+                                @include transition(two,0.75s);
+                            }
+                            @include phone-width{
+                                display: none;
+                            }                                
                         }                           
                     }
                     &:last-child{
@@ -306,47 +324,45 @@
                         }
                     }
                     label.searchControlBtn{
-                        @include pc-width{
-                            @include padding-box(90%,25%,29%,0);
+                        @include pad2pc-width{
                             @include position(absolute);
                             letter-spacing:0.05em;
                             text-align:center;
                             display:block;
                             z-index: 5;
                             width: 100%;
+                        }
+                        @include pc-width{
+                            @include padding-box(90%,25%,29%,0);
                         }
                         @include pad-width{
                             @include padding-box(90%,25%,23%,0);
-                            @include position(absolute);
-                            @include transition(two,0.75s);
-                            letter-spacing:0.05em;
-                            text-align:center;
-                            display:block;
-                            z-index: 5;
-                            width: 100%;
                         }
-                        ul{
+                        ~ul{
+                            @include phone-width{
+                                position:relative;
+                            }
                             li{
                                 input{
                                     &[type="text"]{
-                                        @include pc-width{
+                                        @include pad2pc-width{
                                             font-size: 20px;
                                             position:absolute;
                                             border:none;
                                             @include padding-box(100%,110%,0,0);
                                             @include bgc;
-                                        }                                        
-                                        @include pad-width{
+                                        }
+                                        @include phone-width{
                                             font-size: 20px;
-                                            position:absolute;
                                             border:none;
-                                            @include padding-box(100%,110%,0,0);
-                                            @include bgc;
+                                            @include padding-box(25%,auto,1%,0);
+                                            outline:1px solid #1E1F25;
+                                            background-color: rgba(232, 232, 232, 1.00);
                                         } 
                                     }
                                 }
                                 i{
-                                    @include pc-width{
+                                    @include pad2pc-width{
                                         font-size: 20px;
                                         border:none;
                                         @include padding-box(100%,100%,0,0);
@@ -355,63 +371,48 @@
                                         @include bgc;
                                         outline:1px solid #1E1F25;
                                     }
-                                    @include pad-width{
+                                    @include phone-width{
                                         font-size: 20px;
-                                        border:none;
-                                        @include padding-box(100%,100%,0,0);
+                                        @include padding-box(33%,55%,auto,auto);
                                         position:absolute;
                                         text-align: center;
-                                        @include bgc;
-                                        outline:1px solid #1E1F25;                                        
+                                        color:#000;
                                     }
                                     &:before{
-                                        @include pc-width{
+                                        @include pad2pc-width{
                                             display:block;
                                             @include padding-box(100%,64%,0,0);
                                             @include position(absolute);
                                         }
-                                        @include pad-width{
-                                            display:block;
-                                            @include padding-box(100%,64%,0,0);
-                                            @include position(absolute);                                        
-                                        }
                                     }            
                                 }
                                 &:first-child{
-                                    @include pc-width{
+                                    @include pad2pc-width{
                                         @include ratio-box(70%,55%,0);
                                         @include position(vertical);
                                         margin: auto 1.65% auto 3.3%;
                                         text-align: left;
-                                    }
-                                    @include pad-width{
-                                        @include ratio-box(70%,55%,0);
-                                        @include position(vertical);
-                                        margin: auto 1.65% auto 3.3%;
-                                        text-align: left;                                        
                                     }
                                 }
                                 &:last-child{
-                                    @include pc-width{
+                                    @include pad2pc-width{
                                         @include ratio-box(20%,55%,0);
                                         @include position(vertical);
                                         margin: auto 3.3% auto 1.65%;
                                         text-align: left;
                                     }
-                                    @include pad-width{
-                                        @include ratio-box(20%,55%,0);
+                                    @include phone-width{
+                                        @include ratio-box(33%,55%,0);
+                                        right:0;
                                         @include position(vertical);
                                         margin: auto 3.3% auto 1.65%;
-                                        text-align: left;                                        
-                                    }                
+                                        text-align: left;
+                                    }                 
                                 }
                             }
-                        }                       
+                        }                     
                         &:hover{
-                            @include pc-width{
-                                cursor:pointer;
-                            }
-                            @include pad-width{
+                            @include pad2pc-width{
                                 cursor:pointer;
                             }
                             &:before{
@@ -421,13 +422,28 @@
                             }
                         }
                         &:before{
-                            @extend %pseudoSet;
-                            @extend %position-horizontal;
-                            @include padding-box(0%,63%,0,0);
-                            @extend %boxShadow-one; 
-                            @extend %transition-one;
+                            @include pad2pc-width{
+                                @include presudoSet_default;
+                                @include position(horizontal);
+                                @include padding-box(0%,63%,0,0);
+                                @include boxShadow(one);
+                                @include transition(one,0.75s);
+                            }
                         }                                                 
                     }                    
+                }
+            }
+            >ul{
+                @include phone-width{
+                    width: 100%;
+                    z-index: 1;
+                    padding: 3% 0;
+                    top:-500px;
+                    left:0;
+                    position:absolute;
+                    background-color: rgba(249,249,249,0.95); 
+                    border-bottom:1px solid rgba(192, 192, 192, 0.4);
+                    @include transition(one,0.5s);
                 }
             }
         }

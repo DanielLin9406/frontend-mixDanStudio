@@ -4,19 +4,25 @@ $pad-media-min:601px;
 $phone-media-max:600px;
 // include 
 //電腦
-@mixin pc-width() {
+@mixin pc-width {
     @media all and (min-width: $pc-media-min) {
         @content;
     }
 }
 //平板
-@mixin pad-width() {
+@mixin pad-width {
     @media all and (min-width:$pad-media-min) and (max-width: $pad-media-max) {
         @content;
     }
 }
+//電腦 + 平板
+@mixin pad2pc-width{
+    @media all and (min-width: $pad-media-min) {
+        @content;
+    }
+}
 //手機
- @mixin phone-width() {
+ @mixin phone-width {
     @media all and (max-width: $phone-media-max) {
         @content;
     }

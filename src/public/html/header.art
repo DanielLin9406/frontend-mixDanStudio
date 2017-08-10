@@ -19,7 +19,8 @@
                 </li>
                 <li><a href="brand.html">品牌故事</a></li>
                 <li><a href="reserve.html">聯絡我們</a></li>
-                <li><label for="searchControl" class="searchControlBtn"><i class="fa fa-search" aria-hidden="true"></i></label>
+                <li>
+                    <label for="searchControl" class="searchControlBtn"><i class="fa fa-search" aria-hidden="true"></i></label>
                     <ul>
                         <li><input type="text" name=""></li>
                         <li><i class="fa fa-search" aria-hidden="true"></i></li>

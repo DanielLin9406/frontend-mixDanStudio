@@ -156,4 +156,13 @@ pseudoSet{
     @if $type == one {
         box-shadow: 0 -3px 0 #E11F89 inset;
     }
+    @else if $type == two {
+        box-shadow: 0 -1px 0 #C0C0C0 inset; 
+    }
+    @else if $type == three {
+        box-shadow: 0 3px 0 #C0C0C0; 
+    }
+    @else if $type == four {
+        box-shadow: 0 1px 0 #C0C0C0; 
+    }
 }
