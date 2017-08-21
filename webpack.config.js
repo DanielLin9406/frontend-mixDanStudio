@@ -1,85 +1,119 @@
 const path = require('path');
 const webpack = require('webpack');
 const glob = require('glob');
+const ENV = process.env.NODE_ENV || 'development';
+const DEV_MODE = ENV === 'development';
+
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const extractTextWebpackPlugin = require('extract-text-webpack-plugin');
-const browserSyncPlugin = require('browser-sync-webpack-plugin'); //瀏覽器同步更新 webpack --watch
+const commonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
 const cleanWebpackPlugin = require('clean-webpack-plugin'); //清除dist資料夾
 const uglifyJSPlugin = require('uglifyjs-webpack-plugin'); //去空白行最小化
+// const browserSyncPlugin = require('browser-sync-webpack-plugin'); //瀏覽器同步更新 webpack --watch
 // const manifestPlugin = require('webpack-manifest-plugin'); //hash code
-// const webpackChunkHash = require("webpack-chunk-hash"); 
-// const entries = getEntry('./src/views/**/**.js');
+const entries = getEntry('./src/views/**/**.js');
 
 module.exports = {
-  // context: path.resolve(__dirname, './src'),
-  // entry: entries,
-  entry: {
-    //app: './main.js',
-    vendor: './src/vendor.js',
-    index:'./src/views/index/index',
-    photowork: './src/views/photowork/photowork',
-  },
+  entry: entries,
+  // entry: {
+  //   index:'./src/views/index/index',
+  //   photowork: './src/views/photowork/photowork',
+  // },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: './js/[name].js'
+    filename: './js/[name]-[chunkhash].js',
+    publicPath:DEV_MODE?'http://localhost:8080/':'',
   },
   module: {
-    loaders: [
+    rules: [
       {
-        test: /\.js$/,
-        exclude: [/node_modules/],
-        loader: 'babel-loader'
+        test: /\.(js|jsx)$/,
+        use:{
+          loader:'babel-loader',
+        },
+        exclude: /node_modules/,
       },
-      // 提取sass less 或者 stylus  通过extractTextWebpackPlugin来提取
-      // https://github.com/webpack-contrib/extract-text-webpack-plugin#extracting-sass-or-less
       {
         test: /\.(sass|scss)$/,
         use: extractTextWebpackPlugin.extract({
-          use: ['css-loader', 'sass-loader'],
-          fallback: 'style-loader'
-        })
+          fallback: 'style-loader',
+          use: [{
+            loader:'css-loader',
+            options:{
+              sourceMap:true
+            },
+          },
+          {
+            loader:'sass-loader',
+            options:{
+              sourceMap:true
+            },
+          }],
+        }),
+        exclude: /node_modules/,
+      },
+      {
+        test:/\.pug$/,
+        use:[{
+            loader:'html-loader',
+          },
+          {
+            loader:'pug-html-loader',
+            options:{
+              pretty:DEV_MODE,
+            },
+          }
+        ],
+        exclude: /node_modules/,
       },
       {
         test: /\.art$/,
-        loader: "art-template-loader",
-        options: {
-          // art-template options (if necessary)
-          // @see https://github.com/aui/art-template
-        }
+        use:[
+          {
+            loader: "art-template-loader",
+            options: {
+              // art-template options (if necessary)
+              // @see https://github.com/aui/art-template
+            }            
+          },
+        ],
+        exclude: /node_modules/,
       },
       { 
-        test: /\.(svg| jpg |png)$/, 
-        loader: "file-loader",
-        options:{
-          name:'[name].[hash].[ext]'
-        } 
+        test: /\.(svg|jpg|png|gif|ico)$/,
+        use:[
+          {
+            loader: "url-loader",
+            options:{
+              limit:2048, //小於2048的圖檔，自動變成base64字串
+              name:'./asset/[name].[hash].[ext]'
+            } 
+          }
+        ] 
       },
       {
         test: /\.json$/,
-        loader: 'json-loader'
+        use:[
+          {
+            loader: 'json-loader'
+          }
+        ]
       }
-    ],
+    ]
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      names: ['vendor', 'manifest'], // vendor libs + extracted manifest
-      minChunks: Infinity
-    }),
     ...getPlugins('./src/views/**/**.html'),
+    new commonsChunkPlugin({
+      names: "commons",
+      filename:"./js/commons-[chunkhash].js", 
+      minChunks: 0,
+    }),
     new extractTextWebpackPlugin({
       filename: (getPath) =>{
-        return getPath('./css/[name].css').replace('./dist/./css','./css')
+        return getPath('./css/[name]-[contenthash].css').replace('./dist/./css','./css')
       },
       allChunks:true 
     }),
-    new browserSyncPlugin({
-      // browse to http://localhost:3000/ during development, 
-      // ./public directory is being served 
-      host: 'localhost',
-      port: 3000,
-      server: { baseDir: ['dist'] }
-    }),
-    // new webpackChunkHash(),
     // new manifestPlugin({
     //   fileName: 'hashMapping.json',
     //   manifestVariable: "webpackManifest",
@@ -88,9 +122,14 @@ module.exports = {
     new cleanWebpackPlugin(['dist']),
     new uglifyJSPlugin(),
   ],
-  resolve: {
-    modules: [path.resolve(__dirname, './src'), 'node_modules']
-  },
+  devServer:{
+    hot: true,
+    contentBase: path.resolve(__dirname, './src'),
+    port: 8080, //set reload port
+    stats:{
+      chunks:false
+    }
+  }
 };
 
 /**
@@ -102,11 +141,9 @@ function getEntry(globPath) {
   let temp, entries = {}
   pathName.map(val => {
     // temp = val.split('/').splice(-3)
-    // console.log(temp)
     temp = path.basename(val, '.js')   // ---> index   login
     entries[temp] = val
   })
-  // console.log(entries)
   return entries
 }
 
@@ -115,7 +152,6 @@ function getEntry(globPath) {
  */
 function getPlugins(globPath) {
   let pathName = glob.sync(globPath);
-
   let arrOption = []
   let option = {}
   pathName.map(val => {
