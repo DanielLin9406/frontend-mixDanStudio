@@ -4,7 +4,7 @@ require('./photowork.scss');
 require('../../public/js/header.js');
 require('../../public/js/footer.js');
 // load lib
-const moment = require('moment');
-const _ = require('lodash');
+// const moment = require('moment');
+// const _ = require('lodash');
 
 module.exports = "photowork";

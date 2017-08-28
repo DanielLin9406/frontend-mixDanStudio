@@ -18,9 +18,9 @@ function buildImgTag(claName) {
     img.className = claName;
     return img;
 }
+module.exports = "header";
 
 document.querySelector('.logo>a').appendChild(buildImgTag(img_logo));
-module.exports = "header";
 
 // //import img
 // // 使用html loader 版本
