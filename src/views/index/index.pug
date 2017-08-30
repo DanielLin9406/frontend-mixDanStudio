@@ -1,0 +1,17 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8", name="viewport",content="width=device-width, initial-scale=1.0, ie=edge",http-equiv="X-UA-Compatible")
+        title 首頁 / 混丹視覺工作室
+    body
+        #loading
+        input(type="checkbox", id="menuControl")
+        input(type="checkbox", id="searchControl")
+        #body_bgc
+            .headerspace
+            header.header_bgc
+                include ../../public/html/header.pug
+            footer.footer_wrap
+                include ../../public/html/footer.pug
+        script(src='./js/vendor.js')
+        script(src='./js/common.js')

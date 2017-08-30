@@ -1,0 +1,27 @@
+.header
+    label(class='menuControlBtn', for='menuControl')
+        i(class='fa fa-bars')
+    .logobgc
+        div(class='logo first')
+            a(href="index.html")
+    .navbgc
+        div(class='nav first')
+            ul
+                li
+                    each val, key in {'index':'首頁','services':'服務項目','javascript:;':'作品欣賞','brand':'品牌故事','reserve':'聯絡我們'}
+                        li
+                            a(href=key+'.html')=val
+                            if val == '作品欣賞'
+                                ul
+                                    li
+                                        a(href='photoworks'+'.html')='攝影作品'
+                                    li
+                                        a(href='webworks'+'.html')='網站作品'
+                li
+                    label(class='searchControlBtn', for='searchControl')
+                        i(class='fa fa-search', aria-hidden="true")
+                    ul
+                        li
+                            input(type="text", id="menuControl")
+                        li
+                            i(class='fa fa-search',aria-hidden="true")

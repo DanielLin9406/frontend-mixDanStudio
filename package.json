@@ -38,6 +38,7 @@
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
     "node-sass": "^4.5.3",
+    "pug-html-loader": "^1.1.5",
     "sass-flexbox": "^1.0.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",

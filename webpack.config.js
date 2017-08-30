@@ -66,7 +66,7 @@ module.exports = {
           {
             loader:'pug-html-loader',
             options:{
-              pretty:DEV_MODE,
+              pretty:true,
             },
           }
         ],
@@ -120,7 +120,7 @@ module.exports = {
     ]
   },
   plugins: [
-    ...getPlugins('./src/views/**/**.html'),
+    ...getPlugins('./src/views/**/**.pug'),
     new commonsChunkPlugin({
       // 第三方套件 vendor
       // 共用模組 common
@@ -150,16 +150,15 @@ module.exports = {
     //   inlineManifest: true
     // }),
     new cleanWebpackPlugin(['dist']),
-    new uglifyJSPlugin(),
+    // new uglifyJSPlugin(),
     function () {
       this.plugin("done", function (statsData) {
         var stats = statsData.toJson();
         if (!stats.errors.length) {
-          let globPath = './src/views/**/**.html';
+          let globPath = './src/views/**/**.pug';
           let htmlFileArr = glob.sync(globPath);
-          // var htmlFileName = ["index.html"];
           htmlFileArr.forEach(function(htmlFileFullPath) {
-            let htmlPathFileName = path.join(__dirname, 'dist', htmlFileFullPath.split("/").pop());
+            let htmlPathFileName = path.join(__dirname, 'dist', htmlFileFullPath.split("/").pop().replace('.pug', '.html'));
             let html = fileSystem.readFileSync(htmlPathFileName, "utf8");
             let htmlOutput = html.replace(
               /<script\s+src=\.\/js\/vendor\.js/i,
@@ -206,11 +205,12 @@ function getPlugins(globPath) {
   let pathName = glob.sync(globPath);
   let arrOption = []
   let option = {}
+
   pathName.map(val => {
     option = {
       template: val,
-      filename: path.basename(val),
-      chunks: [path.basename(val, '.html')]
+      filename: path.basename(val).replace('.pug', '.html'), // index.html
+      chunks: [path.basename(val, '.pug')]
       //特别需要注意的是chunks是一个数组
     }
     arrOption.push(new htmlWebpackPlugin(option))
