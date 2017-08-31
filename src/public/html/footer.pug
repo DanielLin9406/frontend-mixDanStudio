@@ -2,7 +2,7 @@
     div(class="footer_logo footer")
         .vam
         a(href="index.html")
-            img(alt="footer_img")
+            img(src='../../assets/logo.png',alt="footer_img")
     - 
         var footer_name_arr = [{
                 class:'footer_services',
@@ -38,10 +38,10 @@
         h2='Follow Us！'
         div(class="follow_social")
             .vam2
-            each val, key in [0,1,2,3]
+            each val, key in {0:'fb',1:'ig',2:'dir',3:'be'}
                 a
                     div
-                        img
+                        img(src='../../assets/'+val+'.png')
 
 .bottom
     p='攝影服務 / 網站建置 / 全方位視覺整合 / 混丹視覺工作室 MIX DAN STUDIO'

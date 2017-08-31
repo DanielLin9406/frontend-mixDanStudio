@@ -7,6 +7,7 @@
         @include ratio-box(80%,0,6.5%);
         @include transition(one,0.75s);
         @include bgc;
+        // background-color: #ffaa00;
         margin: auto;
     }
     @include pad-width{

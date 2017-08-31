@@ -85,6 +85,7 @@ body{
 				@include ratio-box(100%,0,6.5%);
 				@include boxShadow(four);
 				@include transition(one,0.75s);
+				@include bgc;
 				position:fixed;
 				top:0;
 				left:0;

@@ -11,6 +11,26 @@ html(lang="en")
             .headerspace
             header.header_bgc
                 include ../../public/html/header.pug
+            
+            .banner
+                .banner_slider
+                    ul
+                        each val,key in {'banner_slider_1':'專業可靠快速的攝影服務22','banner_slider_2':'全套式的網站建置顧問服務','banner_slider_3':'素材拍攝到網站建置一次完成'}
+                            li
+                                a
+                                    img(src='../../assets/'+key+'.jpg',alt=val)
+                .caption
+                .arrow
+                    a(href='javascript:;')
+                        div
+                            img(class='prev',src='../../assets/arrow-down-01.png')
+                    a(href='javascript:;')
+                        div
+                            img(class='next',src='../../assets/arrow-right-01.png',)
+                .reserve_btn
+                    a(href='reserve.html')='2馬上預約'
+
+
             footer.footer_wrap
                 include ../../public/html/footer.pug
         script(src='./js/vendor.js')
