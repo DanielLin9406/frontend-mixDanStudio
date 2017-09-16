@@ -1,3 +1,11 @@
+if (process.env.NODE_ENV === 'development') {
+    if (module.hot) {
+        require('!raw-loader!../html/header.pug');
+    }
+}
+
+module.exports = "header";
+
 // const render = require('../html/header.art');
 // const data = {
 //     title: 'My Page'
@@ -8,9 +16,6 @@
 // if (typeof document === 'object') {
 //     header_bgc.innerHTML = html;
 // }
-
-module.exports = "header";
-
 // document.querySelector('.logo>a').appendChild(buildImgTag(img_logo));
 
 // //import img

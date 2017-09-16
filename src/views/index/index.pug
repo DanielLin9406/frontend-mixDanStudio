@@ -13,22 +13,24 @@ html(lang="en")
                 include ../../public/html/header.pug
             
             .banner
-                .banner_slider
-                    ul
-                        each val,key in {'banner_slider_1':'專業可靠快速的攝影服務22','banner_slider_2':'全套式的網站建置顧問服務','banner_slider_3':'素材拍攝到網站建置一次完成'}
-                            li
-                                a
-                                    img(src='../../assets/'+key+'.jpg',alt=val)
+                //-button
+                a.arrow(href='javascript:;')
+                    img(class='prev',src='../../assets/arrow-left-01.png')                
+                
+                //-scroller
+                .banner_slider     
+                    //-items
+                    ul 
+                        each val,key in {'banner_slider_1':'專業可靠快速的攝影服務','banner_slider_2':'全套式的網站建置顧問服務','banner_slider_3':'素材拍攝到網站建置一次完成'}
+                            li(style="background-image:url(../../assets/"+key+".jpg)")=val
                 .caption
-                .arrow
-                    a(href='javascript:;')
-                        div
-                            img(class='prev',src='../../assets/arrow-down-01.png')
-                    a(href='javascript:;')
-                        div
-                            img(class='next',src='../../assets/arrow-right-01.png',)
-                .reserve_btn
-                    a(href='reserve.html')='2馬上預約'
+                 //- sticky
+                a.reserve_btn(href='reserve.html')='馬上預約'
+                    
+                //-button
+                a.arrow(href='javascript:;')
+                    img(class='next',src='../../assets/arrow-right-01.png',)
+            
 
 
             footer.footer_wrap

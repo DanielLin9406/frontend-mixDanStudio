@@ -1,3 +1,10 @@
+if (process.env.NODE_ENV === 'development') {
+    if (module.hot) {
+        require('!raw-loader!../html/footer.pug');
+    }
+}
+
+module.exports = "footer";
 // const render = require('../html/footer.art');
 // const data = {
 //     title: 'My Page'
@@ -8,5 +15,3 @@
 // if (typeof document === 'object') {
 //     footer_wrap.innerHTML = html;
 // }
-
-module.exports = "footer";

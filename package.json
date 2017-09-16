@@ -4,7 +4,7 @@
   "description": "將專案改成Native JavaScript ---",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --hot --devtool eval-source-map",
+    "start": "./node_modules/.bin/webpack-dev-server --hot --devtool eval-source-map",
     "build": "cross-env NODE_ENV=production webpack -p --progress",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -45,6 +45,7 @@
     "style-loader": "^0.18.2",
     "url-loader": "^0.5.9",
     "webpack": "^3.5.5",
+    "webpack-dev-server": "^2.8.2",
     "webpack-manifest-plugin": "^1.2.1"
   }
 }

@@ -3,6 +3,7 @@
 @import "../../public/sass/_mixin.scss";
 
 .header{
+    background-color: #ffaa00;
     @include pc-width{
         @include ratio-box(80%,0,6.5%);
         @include transition(one,0.75s);

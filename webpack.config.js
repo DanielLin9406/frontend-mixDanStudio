@@ -129,10 +129,12 @@ module.exports = {
     ]
   },
   plugins: [
-    ...getPlugins('./src/views/**/**.pug'),
+    new definePlugin({
+      'process.env.NODE_ENV':JSON.stringify(ENV),
+      'WEB_URL':JSON.stringify(DEV_MODE?'http://localhost':'http://data.com')
+    }),
     new commonsChunkPlugin({
-      // 第三方套件 vendor
-      // 共用模組 common
+      // 第三方套件 vendor  共用模組 common
       names: ["common","vendor"],
       chunks: ['common', 'index', 'photowork'],
       minChunks: 2,
@@ -140,9 +142,7 @@ module.exports = {
     new providePlugin({
       MO:'moment'
     }),
-    new definePlugin({
-      WEB_URL:JSON.stringify(DEV_MODE?'http://localhost':'http://data.com')
-    }),
+    ...getPlugins('./src/views/**/**.pug'),
     // new manifestPlugin({
     //   fileName: 'hashMapping.json',
     //   manifestVariable: "webpackManifest",
@@ -185,7 +185,7 @@ module.exports = {
   devServer:{
     hot: true,
     contentBase: path.resolve(__dirname, './src'),
-    port: 8080, //set reload port
+    port: 8080, 
     stats:{
       chunks:false
     }
