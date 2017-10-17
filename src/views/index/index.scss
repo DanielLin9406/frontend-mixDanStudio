@@ -36,29 +36,62 @@
                 line-height: 0;
                 transition:transform 1s ease-in-out;
                 li{
-                    // padding:30px 20px;
                     display: inline-block;
                     width: 100%;
                     height: 430px;
                     font-size: 25px;
                     letter-spacing: -0.03em;
-                    line-height: 430px;
+                    background-position: center top;
                     background-size: cover;
                     text-transform: uppercase;
                     box-sizing: border-box;
-                    padding-left: 133px;
-                    text-align: left;
+                    span{
+                        width: 100%;
+                        height: 100%;
+                        padding:10px 20px;
+                        border-radius: 3px;
+                    }
+                    @include pc-width{
+                        padding-left: 10%;
+                        text-align: left;
+                        line-height: 430px;                        
+                    }
+                    @include pad-width{
+                        padding-left: 10%;
+                        text-align: left;
+                        line-height: 430px;
+                    }
+                    @include phone-width{
+                        line-height: 380px;
+                        text-align: center;
+                    }
                     box-shadow: inset 0 0 10px rgba(0,0,0,0.5);                    
                     &:nth-child(1) {
                         color: #dedede;
+                        span{
+                            background-color: rgba(27, 60, 43,0.6);
+                        }
+                    }
+                    &:nth-child(2) {
+                        color: #000;
+                        span{
+                            background-color: rgba(255,255,255,0.7);
+                        }
+                    }
+                    &:nth-child(3) {
+                        span{
+                            background-color: rgba(255, 135, 45,0.1);
+                        }                        
                     }
                 }
             }
         }
         .arrow{
             width: 7%;
+            min-width:66px;
             height: 100%;
             border: none;
+            z-index: 2;
             background: transparent;
             color: #fff;
             font-size: 40px;
@@ -89,22 +122,161 @@
             }            
         }
         .reserve_btn{
-            width: 159px;
+            width: 139px;
             position:absolute;
             text-align: center;
             font-size: 16px;      
-            // background: rgb(240, 240, 240);
-            top:0;
-            bottom:0;
             margin: auto;
-            right:10%;
+            @include phone-width{
+                bottom:20%;
+                left:0;
+                right:0;
+            }
+            @include pad-width{
+                top:0;
+                bottom:0;
+                right:15%;
+            }
+            @include pc-width{
+                top:0;
+                bottom:0;
+                right:15%;
+            }
             height:53px;
             line-height: 53px;
-            border-radius: 50px;
-            // color:rgb(73, 210, 188);
-            // border:1px solid #fff;
-            box-shadow: 0px 3px 4px rgba(255,255,255,1) inset;
-            background:linear-gradient(to bottom,rgba(73,210,188,1),rgba(128,128,128,1) 200%);
+            border-radius: 30px;
+            border:1px solid #fff;
+            background: rgba(252,252,252,1);
+            box-shadow: 0px 3px 9px rgba(0,0,0,0.5);
+            &:before,&:after{
+                content:'';
+                display: block;
+                position: absolute;
+                width: 90%;
+                height: 83%;
+                top:0;
+                bottom:0;
+                left:0;
+                right:0;
+                margin:auto;
+                border: 1px solid rgba(252,252,252,1);
+                border-radius: 30px;
+            }
+            // Trick here. Animate opacity instead of box-shadow itself
+            // http://tobiasahlin.com/blog/how-to-animate-box-shadow/
+            &:before{
+                opacity:1;
+                box-shadow: 0px 1px 6px rgba(0,0,0,0.2),0px -3px 5px rgba(255,255,255,1) inset;
+            }
+            &:after{
+                opacity:0;
+                transition: opacity .5s ease-out;
+                box-shadow: 0px 1px 6px rgba(0,0,0,0.2) inset,0px -3px 5px rgba(255,255,255,1);
+            }
+            &:hover{
+                &:before{
+                    opacity:0;
+                }
+                &:after{
+                    opacity:1;
+                }
+            }
+        }
+    }
+    section.iconWrap-container{
+        width: 100%;
+        max-width:1080px;
+        margin: auto;
+        height:90vh;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-align-items:center;
+        align-items:center;
+        -webkit-justify-content:center;
+        justify-content:center;
+        .iconWrap{
+            width: 85%;
+            height: 60%;
+            display: flex;
+            flex-flow:row nowrap;
+            .icon{
+                letter-spacing: 0.1em;
+                margin: 0 1.5%;
+                border:1px solid #1E1F25;
+                box-shadow: 1px 1px 3px rgba(72,69,64,0.57);
+                flex:1;
+                display: flex;
+                flex-flow:column nowrap;
+                height:100%;
+                max-height: 450px;
+                position: relative;
+                background-color: rgba(252,252,252,1);
+                .iconImg-container{
+                    background-color: rgba(76,90,94,1);
+                    width: 50%;
+                    border-radius: 50%;
+                    margin: auto;
+                    margin-top:-25%;
+                    img{
+                        width: 100%;
+                    }
+                }
+                .iconTxt-container{
+                    flex:5;
+                    h2{
+                        font-size: 1.8vw;
+                        width: 65%;
+                        margin: 22% auto 15% auto;
+                        position:relative;
+                        &:after{
+                            content:'';
+                            width: 30%;
+                            height:150%;
+                            padding-bottom:25%;
+                            display: block;
+                            position:absolute;
+                            top:0;
+                            bottom:0;
+                            left:0;
+                            right:0;
+                            bottom:0;
+                            margin:auto;
+                            border-bottom:3px solid #00BD9E;
+                        }
+                    }
+                    p{
+                        padding-top:5px;
+                        font-size: 1.3vw;
+                        text-align: center;
+                        text-justify: distribute;
+                        line-height:220%;
+                        color:#7A7A7A;
+                        span{
+                            display: block;
+                        }
+                    }
+                }
+                .reserve_btn{
+                    flex:1;
+                    border:1px solid #1E1F25;
+                    border-radius: 2px;
+                    width: 45%;
+                    margin:auto;
+                    position:absolute;
+                    bottom:-3%;
+                    left:0;
+                    right:0;
+                    margin:auto;         
+                    a{
+                        text-align: center;
+                        padding:10% 11%;
+                        font-size: 1.6vw;
+                        letter-spacing: 0.1em;
+                        display: block;
+                        background-color: #ffffff;
+                    }                    
+                }
+            }
         }
     }
 }

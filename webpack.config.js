@@ -53,6 +53,8 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: DEV_MODE ? './js/[name].js' :'./js/[name]-[chunkhash].js',
     publicPath:DEV_MODE?'http://localhost:8080/':'',
+    // Trick: Exposing your variable into global content https://stackoverflow.com/questions/34357489/calling-webpacked-code-from-outside-html-script-tag
+    library: 'globalObject' 
   },
   resolve:{
     extensions:[".js"]

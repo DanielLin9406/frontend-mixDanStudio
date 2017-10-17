@@ -11,10 +11,10 @@ html(lang="en")
             .headerspace
             header.header_bgc
                 include ../../public/html/header.pug
-            
+            //-wrap
             .banner
                 //-button
-                a.arrow(href='javascript:;')
+                a.arrow(href='javascript:;',onclick="globalObject.prev()")
                     img(class='prev',src='../../assets/arrow-left-01.png')                
                 
                 //-scroller
@@ -22,15 +22,54 @@ html(lang="en")
                     //-items
                     ul 
                         each val,key in {'banner_slider_1':'專業可靠快速的攝影服務','banner_slider_2':'全套式的網站建置顧問服務','banner_slider_3':'素材拍攝到網站建置一次完成'}
-                            li(style="background-image:url(../../assets/"+key+".jpg)")=val
+                            li(style="background-image:url(../../assets/"+key+".jpg)")
+                                span=val
                 .caption
                  //- sticky
                 a.reserve_btn(href='reserve.html')='馬上預約'
                     
                 //-button
-                a.arrow(href='javascript:;')
+                a.arrow(href='javascript:;', onclick="globalObject.next();")
                     img(class='next',src='../../assets/arrow-right-01.png',)
             
+            //-icon section
+            section.iconWrap-container
+                //- .vam1
+                .iconWrap
+                    - 
+                        var icon_arr = [{
+                                id:'icon1',
+                                name:'camera',
+                                title:'專業攝影服務',
+                                subtitle:'獨特細膩的攝影眼',
+                                context:['結合專業攝影知識','值得您信賴的品質','影像靈魂與您共鳴']
+                            },
+                            {
+                                id:'icon2',
+                                name:'dev',
+                                title:'網站建置服務',
+                                subtitle:'電商時代不可或缺',
+                                context:['網站建置顧問服務','讓您不再缺東缺西','HTML＋CSS＋JS＋SQL']
+                            },
+                            {
+                                id:'icon3',
+                                name:'image',
+                                title:'視覺整合服務',
+                                subtitle:'客製化的影像素材',
+                                context:['素材精準符合需求','網站建置素材拍攝','混丹幫您一次解決']
+                            }];                
+                    each val, key in icon_arr
+                        div(class='icon' class=[val.id])
+                            .iconImg-container
+                                img(src='../../assets/icon_'+val.name+'.png',alt=val.title)
+                            .iconTxt-container
+                                h2=val.title
+                                p=val.subtitle
+                                    each val2, key2 in val.context
+                                        span=val2
+                            .reserve_btn
+                                a(href='services.html')='暸解更多'
+
 
 
             footer.footer_wrap
