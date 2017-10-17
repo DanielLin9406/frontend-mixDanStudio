@@ -1,6 +1,7 @@
 node_modules/
 dist/
 .vscode/
-assets/
 example/
 package-lock.json
+.DS_Store
+src/.DS_Store
