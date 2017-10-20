@@ -3,11 +3,11 @@
 @import "../../public/sass/_mixin.scss";
 
 .header{
-    @include pc-width{
-        @include ratio-box(80%,0,6.5%);
-        @include transition(one,0.75s);
-        @include bgc;
-        margin: auto;
+    @include phone-width{
+        @include ratio-box(100%,0,16.822430%);
+        position:fixed;
+        top:0;
+        z-index: 400;
     }
     @include pad-width{
         @include ratio-box(100%,0,17.14808362%);
@@ -16,16 +16,13 @@
         margin: auto;
         @include boxShadow(three);
     }
-    @include phone-width{
-        @include ratio-box(100%,0,16.822430%);
-        position:fixed;
-        top:0;
-        z-index: 400px;
+    @include pc-width{
+        @include ratio-box(80%,0,6.5%);
+        @include transition(one,0.75s);
+        @include bgc;
+        margin: auto;
     }
     .menuControlBtn{
-        @include pad2pc-width{
-            display:none;
-        }
         @include phone-width{
             display: block;
             @include position(vertical);
@@ -35,27 +32,27 @@
             font-size: 40px;
             color:#626161;
         }
+        @include pad2pc-width{
+            display:none;
+        }        
     }
     .logobgc{
-        @include pad-width{
-            width: 100%;
-            @include bgc;
-            position:relative;
-            z-index:2;            
-        }
         @include phone-width{
             @include bgc;
             @include boxShadow(two);
             position:relative;
             z-index: 402;
         }    
+        @include pad-width{
+            width: 100%;
+            @include bgc;
+            position:relative;
+            z-index:2;            
+        }        
         .logo{
-            @include pc-width{
-                @include ratio-box(25.197917%,0,5.5%);
-                @include transition(one,0.75s);
-                @include bgc;
-                position:relative;
-                float:left;
+            @include phone-width{
+                @include ratio-box(51.875%,0,16.822430%);
+                margin:auto;
             }
             @include pad-width{
                 @include ratio-box(28%,0,9.08%);
@@ -65,18 +62,21 @@
                 margin: auto;
                 z-index:30;
             }
-            @include phone-width{
-                @include ratio-box(51.875%,0,16.822430%);
-                margin:auto;
+            @include pc-width{
+                @include ratio-box(25.197917%,0,5.5%);
+                @include transition(one,0.75s);
+                @include bgc;
+                position:relative;
+                float:left;
             }
             a{
                 img{
+                    @include phone-width{
+                        width: 100%;
+                    }
                     @include pad2pc-width{
                         width:100%;
                         @include transition(one,0.75s); 
-                    }
-                    @include phone-width{
-                        width: 100%;
                     }
                 }  
             }
@@ -84,22 +84,19 @@
         }
     }
     .navbgc{
-        @include pad2pc-width{
-            width: 100%;
+        @include phone-width{
+            position:relative;
         }
         @include pad-width{
             @include bgc;
         }
-        @include phone-width{
-            position:relative;
+        @include pad2pc-width{
+            width: 100%;
         }
         .nav{
-            @include pc-width{
-                @include ratio-box(73.802083%,0,5.5%);
-                @include transition(one,0.75s);
-                @include bgc;
-                color:#1E1F25;
-                float:left;
+            @include phone-width{
+                width: 100%;
+                height: 0;
             }
             @include pad-width{
                 @include ratio-box(95%,0,8.2907514206%);
@@ -108,19 +105,18 @@
                 margin: auto;
                 color:#1E1F25;
             }
-            @include phone-width{
-                width: 100%;
-                height: 0;
+            @include pc-width{
+                @include ratio-box(73.802083%,0,5.5%);
+                @include transition(one,0.75s);
+                @include bgc;
+                color:#1E1F25;
+                float:left;
             }
             ul{
                 li{
-                    @include pc-width{
-                        @include ratio-box(14.2857143%,0,11.009289595%);
-                        @include transition(three,0.75s);
-                        font-size: 1.3vw;
-                        float:left;
-                        position:relative;
-
+                    @include phone-width{
+                        text-align: center;
+                        padding:8px 0;
                     }
                     @include pad-width{
                         @include ratio-box(14.2857143%,0,8.724389%);
@@ -130,17 +126,17 @@
                         float:left;
                         position:relative;
                     }
-                    @include phone-width{
-                        text-align: center;
-                        padding:8px 0;
+                    @include pc-width{
+                        @include ratio-box(14.2857143%,0,11.009289595%);
+                        @include transition(three,0.75s);
+                        font-size: 1.3vw;
+                        float:left;
+                        position:relative;
+
                     }
                     a{
-                        @include pc-width{
-                            @include padding-box(90%,25%,29%,0);
-                            @include position(absolute);
-                            letter-spacing:0.05em;
-                            text-align:center;
-                            display:block;
+                        @include phone-width{
+                            font-size: 4vw;
                         }
                         @include pad-width{
                             @include padding-box(90%,25%,23%,0);
@@ -150,8 +146,12 @@
                             text-align:center;
                             display:block;
                         }
-                        @include phone-width{
-                            font-size: 4vw;
+                        @include pc-width{
+                            @include padding-box(90%,25%,29%,0);
+                            @include position(absolute);
+                            letter-spacing:0.05em;
+                            text-align:center;
+                            display:block;
                         }
                         &:before{
                             @include pad2pc-width{
@@ -195,13 +195,19 @@
                         }
                     }
                     &:nth-child(4){
-                        @include pad2pc-width{
-                            position:relative;
-                        }
                         @include phone-width{
                             padding:0;
                         } 
+                        @include pad2pc-width{
+                            position:relative;
+                        }
                         ul{
+                            @include pad-width{
+                                @include padding-box(90%,180%,0,0);
+                                top:-100px;
+                                @include position(horizontal);
+                                z-index:1;
+                            }
                             @include pc-width{
                                 @include padding-box(90%,170%,0,0);
                                 top:-150px;
@@ -209,21 +215,21 @@
                                 @include transition(one,0.5s);
                                 z-index:1;
                             }
-                            @include pad-width{
-                                @include padding-box(90%,180%,0,0);
-                                top:-100px;
-                                @include position(horizontal);
-                                z-index:1;
-                            }
                             li{
-                                @include pad2pc-width{
-                                    @include padding-box(100%,50%,0,0);
-                                }
                                 @include phone-width{
                                     display: block;
                                     padding:8px 0;
                                 } 
+                                @include pad2pc-width{
+                                    @include padding-box(100%,50%,0,0);
+                                }
                                 a{
+                                    @include phone-width{
+                                        box-shadow: none;
+                                    } 
+                                    @include pad-width{
+                                        @include padding-box(100%,24%,24%,0);
+                                    }                                    
                                     @include pad2pc-width{
                                         @include bgc;
                                         display:block;
@@ -233,16 +239,15 @@
                                     @include pc-width{
                                         @include padding-box(100%,24%,28%,0);
                                     }
-                                    @include pad-width{
-                                        @include padding-box(100%,24%,24%,0);
-                                    }
-                                    @include phone-width{
-                                        box-shadow: none;
-                                    }                                                                        
+
+                                                                       
                                 }                                    
                             }                                
                         }
                         >a{
+                            @include phone-width{
+                                display: none;
+                            }  
                             @include pad2pc-width{
                                 @include bgc;
                                 z-index:5;
@@ -250,9 +255,6 @@
                             @include pc-width{
                                 @include transition(two,0.75s);
                             }
-                            @include phone-width{
-                                display: none;
-                            }                            
                             &:before{
                                 @include pad2pc-width{
                                     display:none;
@@ -306,16 +308,16 @@
                             }                    
                         }
                         >label{
+                            @include phone-width{
+                                display: none;
+                            }  
                             @include pad2pc-width{
                                 @include bgc;
                                 z-index:5;                                
                             }
                             @include pc-width{
                                 @include transition(two,0.75s);
-                            }
-                            @include phone-width{
-                                display: none;
-                            }                                
+                            }                             
                         }                           
                     }
                     &:last-child{
@@ -324,6 +326,9 @@
                         }
                     }
                     label.searchControlBtn{
+                        @include pad-width{
+                            @include padding-box(90%,25%,23%,0);
+                        }
                         @include pad2pc-width{
                             @include position(absolute);
                             letter-spacing:0.05em;
@@ -335,9 +340,7 @@
                         @include pc-width{
                             @include padding-box(90%,25%,29%,0);
                         }
-                        @include pad-width{
-                            @include padding-box(90%,25%,23%,0);
-                        }
+
                         ~ul{
                             @include phone-width{
                                 position:relative;
@@ -345,13 +348,6 @@
                             li{
                                 input{
                                     &[type="text"]{
-                                        @include pad2pc-width{
-                                            font-size: 20px;
-                                            position:absolute;
-                                            border:none;
-                                            @include padding-box(100%,110%,0,0);
-                                            @include bgc;
-                                        }
                                         @include phone-width{
                                             font-size: 20px;
                                             border:none;
@@ -359,9 +355,23 @@
                                             outline:1px solid #1E1F25;
                                             background-color: rgba(232, 232, 232, 1.00);
                                         } 
+                                        @include pad2pc-width{
+                                            font-size: 20px;
+                                            position:absolute;
+                                            border:none;
+                                            @include padding-box(100%,110%,0,0);
+                                            @include bgc;
+                                        }
                                     }
                                 }
                                 i{
+                                    @include phone-width{
+                                        font-size: 20px;
+                                        @include padding-box(33%,55%,auto,auto);
+                                        position:absolute;
+                                        text-align: center;
+                                        color:#000;
+                                    }
                                     @include pad2pc-width{
                                         font-size: 20px;
                                         border:none;
@@ -371,13 +381,7 @@
                                         @include bgc;
                                         outline:1px solid #1E1F25;
                                     }
-                                    @include phone-width{
-                                        font-size: 20px;
-                                        @include padding-box(33%,55%,auto,auto);
-                                        position:absolute;
-                                        text-align: center;
-                                        color:#000;
-                                    }
+
                                     &:before{
                                         @include pad2pc-width{
                                             display:block;
@@ -395,19 +399,19 @@
                                     }
                                 }
                                 &:last-child{
-                                    @include pad2pc-width{
-                                        @include ratio-box(20%,55%,0);
-                                        @include position(vertical);
-                                        margin: auto 3.3% auto 1.65%;
-                                        text-align: left;
-                                    }
                                     @include phone-width{
                                         @include ratio-box(33%,55%,0);
                                         right:0;
                                         @include position(vertical);
                                         margin: auto 3.3% auto 1.65%;
                                         text-align: left;
-                                    }                 
+                                    } 
+                                    @include pad2pc-width{
+                                        @include ratio-box(20%,55%,0);
+                                        @include position(vertical);
+                                        margin: auto 3.3% auto 1.65%;
+                                        text-align: left;
+                                    }
                                 }
                             }
                         }                     

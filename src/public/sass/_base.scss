@@ -46,13 +46,13 @@ body{
 									li{
 										&:nth-child(7){
 											ul{
-												@include pc-width{
-													top:135%;
-													opacity:1;
-												}
 												@include pad-width{
 													top:135%;
 													opacity:1;													
+												}
+												@include pc-width{
+													top:135%;
+													opacity:1;
 												}
 											}
 										}

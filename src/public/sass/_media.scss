@@ -5,25 +5,25 @@ $phone-media-max:600px;
 // include 
 //電腦
 @mixin pc-width {
-    @media all and (min-width: $pc-media-min) {
+    @media screen and (min-width: $pc-media-min) {
         @content;
     }
 }
 //平板
 @mixin pad-width {
-    @media all and (min-width:$pad-media-min) and (max-width: $pad-media-max) {
+    @media screen and (min-width:$pad-media-min) and (max-width: $pad-media-max) {
         @content;
     }
 }
 //電腦 + 平板
 @mixin pad2pc-width{
-    @media all and (min-width: $pad-media-min) {
+    @media screen and (min-width: $pad-media-min) {
         @content;
     }
 }
 //手機
  @mixin phone-width {
-    @media all and (max-width: $phone-media-max) {
+    @media screen and (max-width: $phone-media-max) {
         @content;
     }
  }

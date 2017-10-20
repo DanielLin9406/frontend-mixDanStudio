@@ -187,7 +187,16 @@
         width: 100%;
         max-width:1080px;
         margin: auto;
-        height:90vh;
+        @include phone-width{
+
+        }
+        @include pad-width{
+            height:80vh;
+        }
+        @include pc-width{
+            height:90vh;
+        }
+        padding-top:50px;
         display: -webkit-flex;
         display: flex;
         -webkit-align-items:center;
@@ -195,8 +204,22 @@
         -webkit-justify-content:center;
         justify-content:center;
         .iconWrap{
-            width: 85%;
-            height: 60%;
+            @include phone-width{
+
+            }
+            @include pad2pc-width{
+                height: 65%;
+                @media screen and (max-width:800px){
+                    width: 85%;
+                }
+                @media screen and (min-width:801px) and (max-width:960px){
+                    width: 75%;
+                }                
+            }
+            @include pc-width{
+                width: 73%;
+                height: 65%;
+            }
             display: flex;
             flex-flow:row nowrap;
             .icon{
@@ -224,7 +247,8 @@
                 .iconTxt-container{
                     flex:5;
                     h2{
-                        font-size: 1.8vw;
+                        font-size: 20px;
+                        white-space: nowrap;
                         width: 65%;
                         margin: 22% auto 15% auto;
                         position:relative;
@@ -246,7 +270,7 @@
                     }
                     p{
                         padding-top:5px;
-                        font-size: 1.3vw;
+                        font-size: 14px;
                         text-align: center;
                         text-justify: distribute;
                         line-height:220%;
@@ -260,7 +284,7 @@
                     flex:1;
                     border:1px solid #1E1F25;
                     border-radius: 2px;
-                    width: 45%;
+                    width: 50%;
                     margin:auto;
                     position:absolute;
                     bottom:-3%;
@@ -269,8 +293,8 @@
                     margin:auto;         
                     a{
                         text-align: center;
-                        padding:10% 11%;
-                        font-size: 1.6vw;
+                        padding:7% 9%;
+                        font-size: 16px;
                         letter-spacing: 0.1em;
                         display: block;
                         background-color: #ffffff;
