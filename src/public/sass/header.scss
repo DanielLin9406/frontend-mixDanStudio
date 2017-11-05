@@ -1,6 +1,7 @@
-@import "../../public/sass/_reset.scss";
-@import "../../public/sass/_media.scss";
-@import "../../public/sass/_mixin.scss";
+@import "../../public/sass/_base.scss";
+@import "../../public/sass/_sass-flexbox.scss";
+@import "../../public/sass/font-awesome/font-awesome.scss";
+// @import "../../public/sass/_font.scss";
 
 .header{
     @include phone-width{
@@ -10,17 +11,18 @@
         z-index: 400;
     }
     @include pad-width{
-        @include ratio-box(100%,0,17.14808362%);
+        @include ratio-box(100%,100%,0%);
         @include transition(one,0.75s);
         @include bgc;
         margin: auto;
         @include boxShadow(three);
     }
     @include pc-width{
-        @include ratio-box(80%,0,6.5%);
+        @include ratio-box(100%,100%,0%);
         @include transition(one,0.75s);
         @include bgc;
         margin: auto;
+        text-align: center;
     }
     .menuControlBtn{
         @include phone-width{
@@ -44,10 +46,18 @@
             z-index: 402;
         }    
         @include pad-width{
-            width: 100%;
+            width: 20%;
+            height:100%;
             @include bgc;
-            position:relative;
+            display: inline-block;
+            vertical-align: middle;            
             z-index:2;            
+        }
+        @include pc-width{
+            width: 17%;
+            height: 100%;
+            display: inline-block;
+            vertical-align: middle;
         }        
         .logo{
             @include phone-width{
@@ -55,32 +65,38 @@
                 margin:auto;
             }
             @include pad-width{
-                @include ratio-box(28%,0,9.08%);
+                @include ratio-box(100%,100%,0);
                 @include transition(one,0.75s);
                 @include bgc;
                 position:relative;
+                display: block;
                 margin: auto;
                 z-index:30;
             }
             @include pc-width{
-                @include ratio-box(25.197917%,0,5.5%);
+                @include ratio-box(100%,100%,0);
                 @include transition(one,0.75s);
                 @include bgc;
                 position:relative;
-                float:left;
+                display: block;
+                margin:auto;
             }
-            a{
-                img{
-                    @include phone-width{
-                        width: 100%;
-                    }
-                    @include pad2pc-width{
-                        width:100%;
-                        @include transition(one,0.75s); 
-                    }
-                }  
-            }
-            
+            img{
+                @include phone-width{
+                    width: 100%;
+                }
+                @include pad2pc-width{
+                    width:auto;
+                    height:90%;
+                    position: absolute;
+                    left:0;
+                    right:0;
+                    top:0;
+                    bottom:0;
+                    margin:auto;
+                    @include transition(one,0.75s); 
+                }
+            }  
         }
     }
     .navbgc{
@@ -91,7 +107,10 @@
             @include bgc;
         }
         @include pad2pc-width{
-            width: 100%;
+            width: 78%;
+            height: 100%;
+            display: inline-block;
+            vertical-align: middle;
         }
         .nav{
             @include phone-width{
@@ -99,27 +118,40 @@
                 height: 0;
             }
             @include pad-width{
-                @include ratio-box(95%,0,8.2907514206%);
+                @include ratio-box(95%,100%,0%);
                 @include transition(one,0.75s);
                 @include bgc;
                 margin: auto;
                 color:#1E1F25;
             }
             @include pc-width{
-                @include ratio-box(73.802083%,0,5.5%);
+                @include ratio-box(90%,100%,0%);
                 @include transition(one,0.75s);
                 @include bgc;
                 color:#1E1F25;
-                float:left;
+                margin:auto;
+                text-align: center;
             }
-            ul{
-                li{
+            .nav-list{
+                @include pad-width{
+                    width: 70%;
+                    height: 100%;
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+                @include pc-width{
+                    width: 70%;
+                    height: 100%;
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+                .nav-item{ //li
                     @include phone-width{
                         text-align: center;
                         padding:8px 0;
                     }
                     @include pad-width{
-                        @include ratio-box(14.2857143%,0,8.724389%);
+                        @include ratio-box(19%,100%,0%);
                         @include transition(three,0.75s);
                         @include bgc;
                         font-size: 1.8vw;
@@ -127,14 +159,14 @@
                         position:relative;
                     }
                     @include pc-width{
-                        @include ratio-box(14.2857143%,0,11.009289595%);
+                        @include ratio-box(20%,100%,0%);
                         @include transition(three,0.75s);
                         font-size: 1.3vw;
                         float:left;
                         position:relative;
 
                     }
-                    a{
+                    .nav-item-text{ //a
                         @include phone-width{
                             font-size: 4vw;
                         }
@@ -147,17 +179,18 @@
                             display:block;
                         }
                         @include pc-width{
-                            @include padding-box(90%,25%,29%,0);
+                            @include padding-box(90%,auto,0,0);
                             @include position(absolute);
                             letter-spacing:0.05em;
                             text-align:center;
                             display:block;
+                            line-height: 70px;
                         }
                         &:before{
                             @include pad2pc-width{
                                 @include presudoSet_default;
                                 @include position(horizontal);
-                                @include padding-box(0%,63%,0,0);
+                                @include padding-box(0%,100%,0,0);
                                 @include boxShadow(one);
                                 @include transition(one,0.75s);
                             }                         
@@ -175,7 +208,7 @@
                     +li{
                         &:before{
                             @include pad2pc-width{
-                                @include padding-box(auto,25%,23%,0);
+                                @include padding-box(auto,25%,0,0);
                                 @include presudoSet(' / ');
                                 @include position(vertical);
                                 font-size: 15px;
@@ -186,7 +219,7 @@
                             }                             
                         }
                     }
-                    &:nth-child(2){
+                    &:nth-child(1){
                         @include phone-width{
                             display: none;
                         }                         
@@ -194,7 +227,7 @@
                             @include presudoSet_default;
                         }
                     }
-                    &:nth-child(4){
+                    &:nth-child(3){
                         @include phone-width{
                             padding:0;
                         } 
@@ -272,7 +305,7 @@
                             }
                         }
                     }
-                    &:nth-child(5),&:nth-child(6){
+                    &:nth-child(4),&:nth-child(5){
                         @include pad2pc-width{
                             @include bgc;
                             z-index:5;                            
@@ -280,9 +313,59 @@
                         @include pc-width{
                             @include transition(two,0.75s);
                         }                          
-                    }                       
-                    &:nth-child(7){
-                        ul{
+                    }                                         
+                }
+                // 搜尋按鈕
+                &.nav-search-container{ //ul
+                    @include pad-width{
+                        width: 16%;
+                    }
+                    @include pc-width{
+                        width: 20%;
+                    }
+                    .nav-search{
+                        width: 100%;
+                        .searchControlBtn{ //label
+                            @include phone-width{
+                                display: none;
+                            }
+                            @include pad-width{
+                                @include padding-box(90%,25%,23%,0);
+                            }                              
+                            @include pad2pc-width{
+                                @include bgc;
+                                @include position(absolute);
+                                letter-spacing:0.05em;
+                                text-align:center;
+                                display:block;
+                                z-index: 5;
+                                width: 100%;                               
+                            }
+                            @include pc-width{
+                                @include padding-box(90%,25%,0%,0);
+                                @include transition(two,0.75s);
+                            }
+                            &:hover{
+                                @include pad2pc-width{
+                                    cursor:pointer;
+                                }
+                                &:before{
+                                    width: 100%;
+                                    @extend %boxShadow-one; 
+                                    @extend %transition-one;
+                                }
+                            }
+                            &:before{
+                                @include pad2pc-width{
+                                    @include presudoSet_default;
+                                    @include position(horizontal);
+                                    @include padding-box(0%,63%,0,0);
+                                    @include boxShadow(one);
+                                    @include transition(one,0.75s);
+                                }
+                            }                                                                                     
+                        } 
+                        ul{ //dropDownMenu
                             @include pad2pc-width{
                                 @include ratio-box(280%,0,50%);
                                 position:absolute;
@@ -305,43 +388,7 @@
                                     border-left:20px solid transparent;
                                     border-right:20px solid transparent;
                                 }                   
-                            }                    
-                        }
-                        >label{
-                            @include phone-width{
-                                display: none;
-                            }  
-                            @include pad2pc-width{
-                                @include bgc;
-                                z-index:5;                                
                             }
-                            @include pc-width{
-                                @include transition(two,0.75s);
-                            }                             
-                        }                           
-                    }
-                    &:last-child{
-                        &:before{
-                            @include presudoSet_default;                             
-                        }
-                    }
-                    label.searchControlBtn{
-                        @include pad-width{
-                            @include padding-box(90%,25%,23%,0);
-                        }
-                        @include pad2pc-width{
-                            @include position(absolute);
-                            letter-spacing:0.05em;
-                            text-align:center;
-                            display:block;
-                            z-index: 5;
-                            width: 100%;
-                        }
-                        @include pc-width{
-                            @include padding-box(90%,25%,29%,0);
-                        }
-
-                        ~ul{
                             @include phone-width{
                                 position:relative;
                             }
@@ -413,28 +460,9 @@
                                         text-align: left;
                                     }
                                 }
-                            }
-                        }                     
-                        &:hover{
-                            @include pad2pc-width{
-                                cursor:pointer;
-                            }
-                            &:before{
-                                width: 100%;
-                                @extend %boxShadow-one; 
-                                @extend %transition-one;
-                            }
+                            }                                                
                         }
-                        &:before{
-                            @include pad2pc-width{
-                                @include presudoSet_default;
-                                @include position(horizontal);
-                                @include padding-box(0%,63%,0,0);
-                                @include boxShadow(one);
-                                @include transition(one,0.75s);
-                            }
-                        }                                                 
-                    }                    
+                    }                 
                 }
             }
             >ul{

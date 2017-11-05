@@ -1,4 +1,5 @@
 @import "../../public/sass/_media.scss";
+@import "../../public/sass/_reset.scss";
 @import "../../public/sass/_mixin.scss";
 
 body{
@@ -7,6 +8,7 @@ body{
 	text-align:center;
 	background-color:#F9F9F9;
 	font-family:"Microsoft YaHei";
+	font-family:"Huakang";
     #menuControl{
 		position:absolute;
 		left:-100000px;
@@ -70,19 +72,25 @@ body{
 		width: 100%;
 		margin:auto;
 		.headerspace{
-			@include pc-width{
-				@include ratio-box(100%,0,6.5%);
-			}
-			@include pad-width{
-				@include ratio-box(100%,0,17.14808362%);
-			}
 			@include phone-width{
 				@include ratio-box(100%,0,16.822430%);
 			}
+			@include pad-width{
+				@include ratio-box(100%,70px,0%);
+			}
+			@include pc-width{
+				@include ratio-box(100%,70px,0%);
+			}
 		}
 		header.header_bgc{
+			@include pad-width{
+				@include ratio-box(100%,70px,0%);
+				position:fixed;
+				top:0;
+				z-index:2000;	
+			}
 			@include pc-width{
-				@include ratio-box(100%,0,6.5%);
+				@include ratio-box(100%,70px,0);
 				@include boxShadow(four);
 				@include transition(one,0.75s);
 				@include bgc;
@@ -92,14 +100,7 @@ body{
 				right:0;
 				margin: auto;		
 				z-index:2000;	
-			}
-			@include pad-width{
-				@include ratio-box(100%,0,17.14808362%);
-				position:fixed;
-				top:0;
-				z-index:2000;	
-			}
-		
+			}	
 		}
 	}
 }

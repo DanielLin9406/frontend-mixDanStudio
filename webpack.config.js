@@ -106,19 +106,41 @@ module.exports = {
             loader:"html-loader"
           }
         ]
-      },
+      },      
       { 
-        test: /\.(svg|jpg|png|gif|ico)$/,
+        test: /\.(jpg|png|gif|JPG)$/,
         use:[
           {
             loader: "url-loader", //or file-loader
             options:{
               limit:2048, //小於2048的圖檔，自動變成base64字串
-              name:"./asset/[name].[ext]"
+              name:"./assets/[name].[ext]"
             } 
           }
         ],
         include:path.resolve('src/assets') 
+      },
+      { 
+        test: /\.(woff|woff2|eot|ttf|ttc)$/,
+        use:[
+          {
+            loader: "url-loader",
+            options:{
+              limit:10000,
+              name:"./assets/fonts/[name].[ext]"
+            } 
+          }
+        ],
+        include:path.resolve('src/assets/fonts') 
+      },
+      {
+        test: /\.svg$/,
+        use:[
+          {
+            loader: 'svg-url-loader'
+          }
+        ],
+        include:path.resolve('src/assets/fonts')
       },
       {
         test: /\.json$/,
@@ -143,7 +165,7 @@ module.exports = {
     }),
     new providePlugin({
       MO:'moment'
-    }),
+    }),   
     ...getPlugins('./src/views/**/**.pug'),
     // new manifestPlugin({
     //   fileName: 'hashMapping.json',

@@ -1,12 +1,9 @@
-@import "../../public/sass/_base.scss";
-@import "../../public/sass/_sass-flexbox.scss";
-
 @import "../../public/sass/header.scss";
 @import "../../public/sass/footer.scss";
 .nav{
     ul{
         li{
-            &:nth-child(2){
+            &:nth-child(1){
                 a{
                     box-shadow: 0 -3px 0 #E11F89 inset; 
                     -webkit-transition: padding .75s;
@@ -225,8 +222,7 @@
             .icon{
                 letter-spacing: 0.1em;
                 margin: 0 1.5%;
-                border:1px solid #1E1F25;
-                box-shadow: 1px 1px 3px rgba(72,69,64,0.57);
+                box-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(0, 0, 0, 0.15);
                 flex:1;
                 display: flex;
                 flex-flow:column nowrap;
@@ -234,12 +230,13 @@
                 max-height: 450px;
                 position: relative;
                 background-color: rgba(252,252,252,1);
+                border-radius: 5px;
                 .iconImg-container{
                     background-color: rgba(76,90,94,1);
-                    width: 50%;
+                    width: 30%;
                     border-radius: 50%;
                     margin: auto;
-                    margin-top:-25%;
+                    margin-top:10%;
                     img{
                         width: 100%;
                     }
@@ -250,7 +247,7 @@
                         font-size: 20px;
                         white-space: nowrap;
                         width: 65%;
-                        margin: 22% auto 15% auto;
+                        margin: 9% auto 15% auto;
                         position:relative;
                         &:after{
                             content:'';
@@ -282,12 +279,12 @@
                 }
                 .reserve_btn{
                     flex:1;
-                    border:1px solid #1E1F25;
                     border-radius: 2px;
-                    width: 50%;
+                    border-top:1px solid #E0E0E0;
+                    width: 100%;
                     margin:auto;
                     position:absolute;
-                    bottom:-3%;
+                    bottom:0%;
                     left:0;
                     right:0;
                     margin:auto;         
