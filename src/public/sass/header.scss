@@ -130,17 +130,17 @@
                 @include bgc;
                 color:#1E1F25;
                 margin:auto;
-                text-align: center;
+                text-align: left;
             }
             .nav-list{
                 @include pad-width{
-                    width: 70%;
+                    width: 75%;
                     height: 100%;
                     display: inline-block;
                     vertical-align: middle;
                 }
                 @include pc-width{
-                    width: 70%;
+                    width: 75%;
                     height: 100%;
                     display: inline-block;
                     vertical-align: middle;

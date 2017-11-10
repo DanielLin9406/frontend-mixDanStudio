@@ -14,7 +14,7 @@ html(lang="en")
             //-wrap
             .banner
                 //-button
-                a.arrow(href='javascript:;',onclick="globalObject.prev()")
+                a.arrow(href='javascript:;')
                     img(class='prev',src='../../assets/arrow-left-01.png')                
                 
                 //-scroller
@@ -29,7 +29,7 @@ html(lang="en")
                 a.reserve_btn(href='reserve.html')='馬上預約'
                     
                 //-button
-                a.arrow(href='javascript:;', onclick="globalObject.next();")
+                a.arrow(href='javascript:;')
                     img(class='next',src='../../assets/arrow-right-01.png',)
             
             //-icon section
@@ -69,7 +69,21 @@ html(lang="en")
                                         span=val2
                             .reserve_btn
                                 a(href='services.html')='暸解更多'
-
+            //-photowork section
+            section.photoWorks-container
+                //-.vam1
+                .photoWorks
+                    div(class='prev sliderCtrl')
+                        .slider-controlLine
+                    div(class='next sliderCtrl')
+                        .slider-controlLine.slider-controlLine-right                   
+                    -
+                        var photo_arr = {'1':'1'};
+                    ul
+                    each val, key in photo_arr
+                        li(class='pw' class='pw'+key)
+                            img(src='../../assets/photoworks'+key+'.jpg',alt='攝影比賽'+key)
+                            
 
 
             footer.footer_wrap

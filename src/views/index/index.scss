@@ -141,7 +141,7 @@
             }
             height:53px;
             line-height: 53px;
-            border-radius: 30px;
+            border-radius: 10px;
             border:1px solid #fff;
             background: rgba(252,252,252,1);
             box-shadow: 0px 3px 9px rgba(0,0,0,0.5);
@@ -157,7 +157,7 @@
                 right:0;
                 margin:auto;
                 border: 1px solid rgba(252,252,252,1);
-                border-radius: 30px;
+                border-radius: 10px;
             }
             // Trick here. Animate opacity instead of box-shadow itself
             // http://tobiasahlin.com/blog/how-to-animate-box-shadow/
@@ -287,7 +287,7 @@
                     bottom:0%;
                     left:0;
                     right:0;
-                    margin:auto;         
+                    margin:auto;  
                     a{
                         text-align: center;
                         padding:7% 9%;
@@ -295,9 +295,145 @@
                         letter-spacing: 0.1em;
                         display: block;
                         background-color: #ffffff;
+                        border-radius: 5px;
                     }                    
                 }
             }
         }
+    }
+    section.photoWorks-container{
+        width: 100%;
+        height:600px;
+        background-color: #333;
+        margin: auto;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        .photoWorks{
+            max-width:695px;
+            margin:10px 0;
+            margin:auto;
+            box-shadow: 0 20px 50px -25px rgba(0, 0, 0, 1);
+            position: relative;
+            .sliderCtrl{
+                position: absolute;
+                top:0;
+                bottom:0;
+                margin:auto;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                border: 2px solid #555;
+                background-color: transparent;
+                transition: all 0.4s cubic-bezier(0.195, 0.885, 0.32, 1.675);
+                .slider-controlLine{
+                    position: absolute;
+                    width: 14px;
+                    height: 3px;
+                    left:0;
+                    right:0;
+                    top:0;
+                    bottom:0;
+                    margin:auto;
+                    &:before,&:after{
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        background-color: #666;
+                        transform-origin: 50% 50%;
+                        left:-4%;                       
+                    }
+                    &:before{
+                        bottom:150%;
+                        transform: rotate(-45deg);
+                    }
+                    &:after{
+                        top:150%;
+                        transform: rotate(45deg);
+                    }
+                }
+                .slider-controlLine-right{
+                    &:before,&:after{
+                        right:-8%;
+                        left:auto;                        
+                    }
+                    &:before{
+                        bottom:150%;
+                        transform: rotate(45deg);
+                    }
+                    &:after{
+                        top:150%;
+                        transform: rotate(-45deg);
+                    }
+                }
+                &.prev{
+                    left:-84px;;
+                }
+                &.next{
+                    right:-84px;
+                }
+                &:hover {
+                    background: #666;
+                    border-color: #666;
+                    transform: scale(1.2);
+                    box-shadow: 0 10px 40px -15px rgba(0, 0, 0, 1);
+                    .slider-controlLine{
+                        &:before,&:after{
+                            background-color: #333;
+                        }
+                        &:before{
+                            animation: arrowLineRotation 0.5s;
+                        }
+                        &:after{
+                            animation: arrowLineRotationRev 0.5s;
+                        }
+                    }
+                    .slider-controlLine-right{
+                        &:before{
+                            animation: arrowLineRotationRev 0.5s;
+                        }
+                        &:after{
+                            animation: arrowLineRotation 0.5s;
+                        }                        
+                    }
+                }
+                &:active {
+                    transform: translate(0, 3px) scale(1.2);
+                }                                
+            }
+        }
+        .ripple {
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(0);
+            position: absolute;
+            opacity: 1;
+        }
+        .rippleEffect {
+            animation: rippleDrop .6s linear;
+        }
+    }
+}
+
+@keyframes rippleDrop {
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+} 
+
+@keyframes arrowLineRotation {
+    to {
+        transform: rotate(135deg);
+    }
+}
+
+@keyframes arrowLineRotationRev {
+    to {
+        transform: rotate(-135deg);
     }
 }
