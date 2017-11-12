@@ -309,6 +309,8 @@
         display:flex;
         align-items: center;
         justify-content: center;
+        position: relative;
+        overflow: hidden;
         .photoWorks{
             max-width:695px;
             margin:10px 0;
