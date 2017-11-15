@@ -184,7 +184,8 @@
                             letter-spacing:0.05em;
                             text-align:center;
                             display:block;
-                            line-height: 70px;
+                            font-size: 0.9rem;
+                            line-height: 55px;
                         }
                         &:before{
                             @include pad2pc-width{

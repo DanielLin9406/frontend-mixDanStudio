@@ -403,6 +403,7 @@
                 }
                 &:active {
                     transform: translate(0, 3px) scale(1.2);
+                    box-shadow: none;
                 }                                
             }
         }
@@ -410,7 +411,7 @@
             width: 0;
             height: 0;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.1);
             transform: scale(0);
             position: absolute;
             opacity: 1;

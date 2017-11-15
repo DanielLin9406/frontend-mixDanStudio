@@ -76,21 +76,21 @@ body{
 				@include ratio-box(100%,0,16.822430%);
 			}
 			@include pad-width{
-				@include ratio-box(100%,70px,0%);
+				@include ratio-box(100%,55px,0%);
 			}
 			@include pc-width{
-				@include ratio-box(100%,70px,0%);
+				@include ratio-box(100%,55px,0%);
 			}
 		}
 		header.header_bgc{
 			@include pad-width{
-				@include ratio-box(100%,70px,0%);
+				@include ratio-box(100%,55px,0%);
 				position:fixed;
 				top:0;
 				z-index:2000;	
 			}
 			@include pc-width{
-				@include ratio-box(100%,70px,0);
+				@include ratio-box(100%,55px,0);
 				@include boxShadow(four);
 				@include transition(one,0.75s);
 				@include bgc;

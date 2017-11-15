@@ -1,15 +1,17 @@
-// sass
-import ('./index.scss');
+// js lib
+import $ from 'jquery';
+import 'slick-carousel';
 // js
-// It acts in the same way that window acts in the browswr.
-// require('../../public/js/slider');
 import ('../../public/js/header');
 import ('../../public/js/footer');
+// sass
+import ('slick-carousel/slick/slick.scss');
+import ('slick-carousel/slick/slick-theme.scss');
+import ('./index.scss');
+
 // html with pug template and hot reload in DevMode
-if (process.env.NODE_ENV === 'development') {
-    if (module.hot) {
-        import ('!raw-loader!./index.pug');
-    }
+if (process.env.NODE_ENV === 'development' && module.hot) {
+    import ('!raw-loader!./index.pug');
 }
 
 export class banner{
@@ -40,7 +42,7 @@ function ripple (e){
     let buttonHeight = null;
     let pageX = null;
     let pageY = null;
-    console.log(e.target);
+
     // Setup
     if(e.target.classList.contains('sliderCtrl')){
         posX = e.target.parentNode.parentNode.offsetLeft;
@@ -82,7 +84,7 @@ function ripple (e){
     let y = pageY - posY - buttonHeight / 2;
   
     let cssStyle = 'width:'+buttonWidth+'px;height:'+buttonHeight+'px;top:'+y+'px'+';left:'+x+'px;';
-    console.log(cssStyle);
+    // console.log(cssStyle);
     // Add the ripples CSS and start the animation
     document.querySelector('.ripple').style.cssText = cssStyle;
     document.querySelector('.ripple').classList.add('rippleEffect');  
@@ -93,6 +95,13 @@ document.querySelectorAll('.arrow')[0].addEventListener('click',function(){index
 document.querySelectorAll('.arrow')[1].addEventListener('click',function(){index_banner.next();},false);
 document.querySelector('.photoWorks-container').addEventListener('click',ripple,false);
 
+$('.slider').slick({
+    autoplay: true,
+    speed: 800,
+    lazyLoad: 'progressive',
+    arrows: true,
+    dots: true,
+});
 
 window.addEventListener('resize', globalObject.setTransform);
 

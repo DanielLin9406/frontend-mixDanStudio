@@ -49,7 +49,7 @@ html(lang="en")
                                 name:'dev',
                                 title:'網站建置服務',
                                 subtitle:'電商時代不可或缺',
-                                context:['網站建置顧問服務','讓您不再缺東缺西','HTML＋CSS＋JS＋SQL']
+                                context:['網站建置顧問服務','讓您不再缺東缺西','HTML＋CSS＋JS＋PHP']
                             },
                             {
                                 id:'icon3',
@@ -78,12 +78,12 @@ html(lang="en")
                     div(class='next sliderCtrl')
                         .slider-controlLine.slider-controlLine-right                   
                     -
-                        var photo_arr = {'1':'1'};
-                    ul
-                    each val, key in photo_arr
-                        li(class='pw' class='pw'+key)
-                            img(src='../../assets/photoworks'+key+'.jpg',alt='攝影比賽'+key)
-                            
+                        var photo_arr = {'1':'1','2':'2','3':'3'};
+                    ul(class='slider')
+                        each val, key in photo_arr
+                            li(class='slide' class='pw pw'+key)
+                                img(src='../../assets/photoworks'+key+'.jpg',alt='攝影比賽'+key)
+                                
 
 
             footer.footer_wrap

@@ -40,7 +40,7 @@ const cssLoaderDevMode = {
       loader: 'sass-loader',
       options: {sourceMap: true},
     }],
-  exclude: /node_modules/,
+  // exclude: /node_modules/,
 }
 
 module.exports = {
@@ -118,7 +118,7 @@ module.exports = {
             } 
           }
         ],
-        include:path.resolve('src/assets') 
+        // include:path.resolve('src/assets') 
       },
       { 
         test: /\.(woff|woff2|eot|ttf|ttc)$/,
@@ -131,7 +131,7 @@ module.exports = {
             } 
           }
         ],
-        include:path.resolve('src/assets/fonts') 
+        // include:path.resolve('src/assets/fonts') 
       },
       {
         test: /\.svg$/,
@@ -140,7 +140,7 @@ module.exports = {
             loader: 'svg-url-loader'
           }
         ],
-        include:path.resolve('src/assets/fonts')
+        // include:path.resolve('src/assets/fonts')
       },
       {
         test: /\.json$/,
@@ -164,7 +164,8 @@ module.exports = {
       minChunks: 2,
     }),
     new providePlugin({
-      MO:'moment'
+      MO:'moment',
+      $: "jquery",
     }),   
     ...getPlugins('./src/views/**/**.pug'),
     // new manifestPlugin({
