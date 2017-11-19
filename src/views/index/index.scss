@@ -317,6 +317,12 @@
             margin:auto;
             box-shadow: 0 20px 50px -25px rgba(0, 0, 0, 1);
             position: relative;
+            [data-animation-in]{
+                // Slick presets
+                opacity: 0;
+                animation-duration: 1.5s;
+                transition: opacity 0.5s ease 0.3s;            
+            }
             .sliderCtrl{
                 position: absolute;
                 top:0;
@@ -406,6 +412,55 @@
                     box-shadow: none;
                 }                                
             }
+            .slick-list{
+                .slick-slide{
+                    div{
+                        .slide{
+                            vertical-align: middle;
+                            .img_container{
+                                width: 100%;
+                                height: auto;
+                                overflow: hidden;                                                                                          
+                                img{
+                                    max-width: 100%;
+                                    height: auto;                                
+                                    opacity: 1!important;
+                                    animation-duration: 3s;
+                                    transition: all 1s cubic-bezier(0.25, 0.1, 0.84, 0.51);                            
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .slick-dots {
+                li {
+                    height: 3px;
+                    width: 50px;
+                    button {
+                        position: relative;
+                        background-color: #fff;
+                        opacity: 0.25;
+                        width: 50px;
+                        height: 3px;
+                        padding: 0;
+                        &:hover, &:focus {
+                            opacity: 1;
+                        }
+                        &:before{
+                            content:'';
+                            opacity:0;
+                        }
+                    }
+                    &.slick-active button {
+                        color: #fff;
+                        opacity: 0.75;
+                        &:hover, &:focus {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
         }
         .ripple {
             width: 0;
@@ -417,14 +472,14 @@
             opacity: 1;
         }
         .rippleEffect {
-            animation: rippleDrop .6s linear;
+            animation: rippleDrop .3s linear;
         }
     }
 }
 
 @keyframes rippleDrop {
     100% {
-        transform: scale(2);
+        transform: scale(0.5);
         opacity: 0;
     }
 } 
@@ -440,3 +495,30 @@
         transform: rotate(-135deg);
     }
 }
+
+
+@keyframes zoomInImage {
+    from {
+        transform: scale3d(1, 1, 1);
+    }
+    to {
+        transform: scale3d(1.08, 1.08, 1.08);
+    }
+}
+  
+.zoomInImage {
+    animation-name: zoomInImage;
+}
+
+@keyframes zoomOutImage {
+    from {
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+    to {
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+.zoomOutImage {
+    animation-name: zoomOutImage;
+}  

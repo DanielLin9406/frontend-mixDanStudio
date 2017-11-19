@@ -70,6 +70,16 @@ module.exports = {
       },
       DEV_MODE ? cssLoaderDevMode : cssLoaderProductionMode,
       {
+        test: /\.(css)$/,
+        use:[
+          { loader: 'style-loader' },
+          {
+            loader: 'css-loader',
+            options: {sourceMap: true},
+          },
+        ]
+      },
+      {
         test:/\.pug$/,
         use:[{
             loader:'html-loader',
@@ -166,6 +176,7 @@ module.exports = {
     new providePlugin({
       MO:'moment',
       $: "jquery",
+      jQuery: "jquery"
     }),   
     ...getPlugins('./src/views/**/**.pug'),
     // new manifestPlugin({

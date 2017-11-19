@@ -72,18 +72,20 @@ html(lang="en")
             //-photowork section
             section.photoWorks-container
                 //-.vam1
-                .photoWorks
-                    div(class='prev sliderCtrl')
+                //- .photoWorks
+                    //- div(class='prev sliderCtrl')
                         .slider-controlLine
-                    div(class='next sliderCtrl')
-                        .slider-controlLine.slider-controlLine-right                   
-                    -
-                        var photo_arr = {'1':'1','2':'2','3':'3'};
-                    ul(class='slider')
-                        each val, key in photo_arr
-                            li(class='slide' class='pw pw'+key)
-                                img(src='../../assets/photoworks'+key+'.jpg',alt='攝影比賽'+key)
+                    //- div(class='next sliderCtrl')
+                    //-     .slider-controlLine.slider-controlLine-right                   
+                -
+                    var photo_arr = {'1':'1','2':'2','3':'3'};
+                div(class='photoWorks')
+                    each val, key in photo_arr
+                        div(class='slide' class='pw pw'+key)
+                            div(class='img_container')
+                                img(src='../../assets/photoworks'+key+'.jpg',alt='攝影比賽'+key,class='animated',data-animation-in='zoomInImage')
                                 
+                               
 
 
             footer.footer_wrap

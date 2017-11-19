@@ -4,10 +4,13 @@ import 'slick-carousel';
 // js
 import ('../../public/js/header');
 import ('../../public/js/footer');
+import ('../../public/js/slick-animation');
 // sass
 import ('slick-carousel/slick/slick.scss');
 import ('slick-carousel/slick/slick-theme.scss');
 import ('./index.scss');
+
+import ('animate.css/animate.min.css');
 
 // html with pug template and hot reload in DevMode
 if (process.env.NODE_ENV === 'development' && module.hot) {
@@ -36,19 +39,25 @@ export class banner{
 }
 
 function ripple (e){
+    console.log('ripple click;')
     let posX = null;
     let posY = null;
     let buttonWidth = null;
     let buttonHeight = null;
     let pageX = null;
     let pageY = null;
-
+    console.log(e.target);
     // Setup
     if(e.target.classList.contains('sliderCtrl')){
         posX = e.target.parentNode.parentNode.offsetLeft;
         posY = e.target.parentNode.parentNode.offsetTop;
         buttonWidth = e.target.parentNode.parentNode.offsetWidth;
         buttonHeight = e.target.parentNode.parentNode.offsetHeight;
+    }else if(e.target.parentNode.classList.contains('sliderCtrl')){
+        posX = e.target.parentNode.parentNode.parentNode.offsetLeft;
+        posY = e.target.parentNode.parentNode.parentNode.offsetTop;
+        buttonWidth = e.target.parentNode.parentNode.parentNode.offsetWidth;
+        buttonHeight = e.target.parentNode.parentNode.parentNode.offsetHeight;
     }else{
         posX = e.target.offsetLeft;
         posY = e.target.offsetTop;
@@ -68,6 +77,8 @@ function ripple (e){
 
     if(e.target.classList.contains('sliderCtrl')){
         e.target.parentNode.parentNode.insertBefore(ripple, e.target.parentNode.parentNode.firstChild);
+    }else if(e.target.parentNode.classList.contains('sliderCtrl')){
+        e.target.parentNode.parentNode.parentNode.insertBefore(ripple, e.target.parentNode.parentNode.parentNode.firstChild);
     }else{
         e.target.insertBefore(ripple, e.target.firstChild);
     }
@@ -90,20 +101,41 @@ function ripple (e){
     document.querySelector('.ripple').classList.add('rippleEffect');  
 }
 
-let index_banner = new banner();
-document.querySelectorAll('.arrow')[0].addEventListener('click',function(){index_banner.prev();},false);
-document.querySelectorAll('.arrow')[1].addEventListener('click',function(){index_banner.next();},false);
-document.querySelector('.photoWorks-container').addEventListener('click',ripple,false);
+window.onload = function(){
 
-$('.slider').slick({
-    autoplay: true,
-    speed: 800,
-    lazyLoad: 'progressive',
-    arrows: true,
-    dots: true,
-});
+    //Index init
+    let index_banner = new banner();
+    document.querySelectorAll('.arrow')[0].addEventListener('click',function(){index_banner.prev();},false);
+    document.querySelectorAll('.arrow')[1].addEventListener('click',function(){index_banner.next();},false);
+    document.querySelector('.photoWorks-container').addEventListener('click',ripple,false);
+    
+    $('.photoWorks')
+    .on('init',function(e,slick){
+        $('[aria-label="Previous"]').addClass('prev sliderCtrl').removeClass('slick-prev slick-arrow');
+        $('[aria-label="Next"]').addClass('next sliderCtrl').removeClass('slick-next slick-arrow');
+        
+        $('[aria-label="Previous"]').text('').append('<div class="slider-controlLine"></div>');
+        $('[aria-label="Next"]').text('').append('<div class="slider-controlLine slider-controlLine-right"></div>');
+    }).on('beforeChange', function(e, slick, currentSlide, nextSlide) {
 
-window.addEventListener('resize', globalObject.setTransform);
+    }).on('afterChange', function(e, slick, currentSlide, nextSlide) {
+        
+    }).slick({
+        autoplay: true,
+        autoplaySpeed: 8000,
+        slideToShow:1,
+        slideToScroll:1,
+        infinite:true,
+        speed: 1000,
+        pauseOnHover:true,
+        useTransform:true,
+        lazyLoad: 'progressive',
+        arrows: true,
+        dots: true,
+    }).slickAnimation();
+    
+    window.addEventListener('resize', globalObject.setTransform);
+}
 
 // function Animal(){  
 
