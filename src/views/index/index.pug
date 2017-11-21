@@ -34,30 +34,29 @@ html(lang="en")
             
             //-icon section
             section.iconWrap-container
-                //- .vam1
-                .iconWrap
-                    - 
-                        var icon_arr = [{
-                                id:'icon1',
-                                name:'camera',
-                                title:'專業攝影服務',
-                                subtitle:'獨特細膩的攝影眼',
-                                context:['結合專業攝影知識','值得您信賴的品質','影像靈魂與您共鳴']
-                            },
-                            {
-                                id:'icon2',
-                                name:'dev',
-                                title:'網站建置服務',
-                                subtitle:'電商時代不可或缺',
-                                context:['網站建置顧問服務','讓您不再缺東缺西','HTML＋CSS＋JS＋PHP']
-                            },
-                            {
-                                id:'icon3',
-                                name:'image',
-                                title:'視覺整合服務',
-                                subtitle:'客製化的影像素材',
-                                context:['素材精準符合需求','網站建置素材拍攝','混丹幫您一次解決']
-                            }];                
+                - 
+                    var icon_arr = [{
+                            id:'icon1',
+                            name:'camera',
+                            title:'專業攝影服務',
+                            subtitle:'獨特細膩的攝影眼',
+                            context:['結合專業攝影知識','值得您信賴的品質','影像靈魂與您共鳴']
+                        },
+                        {
+                            id:'icon2',
+                            name:'dev',
+                            title:'網站建置服務',
+                            subtitle:'電商時代不可或缺',
+                            context:['網站建置顧問服務','讓您不再缺東缺西','HTML＋CSS＋JS＋PHP']
+                        },
+                        {
+                            id:'icon3',
+                            name:'image',
+                            title:'視覺整合服務',
+                            subtitle:'客製化的影像素材',
+                            context:['素材精準符合需求','網站建置素材拍攝','混丹幫您一次解決']
+                        }];                   
+                .iconWrap             
                     each val, key in icon_arr
                         div(class='icon' class=[val.id])
                             .iconImg-container
@@ -70,8 +69,9 @@ html(lang="en")
                             .reserve_btn
                                 a(href='services.html')='暸解更多'
             //-photowork section
+            .photoWorks-container-bg
+                p='Photo'            
             section.photoWorks-container
-                //-.vam1
                 //- .photoWorks
                     //- div(class='prev sliderCtrl')
                         .slider-controlLine
@@ -79,14 +79,23 @@ html(lang="en")
                     //-     .slider-controlLine.slider-controlLine-right                   
                 -
                     var photo_arr = {'1':'1','2':'2','3':'3'};
-                div(class='photoWorks')
+
+                .photoWorks
                     each val, key in photo_arr
                         div(class='slide' class='pw pw'+key)
                             div(class='img_container')
                                 img(src='../../assets/photoworks'+key+'.jpg',alt='攝影比賽'+key,class='animated',data-animation-in='zoomInImage')
-                                
-                               
-
+            //-webwork section
+            section.webWorks-container
+                -
+                    var web_arr = {'1':'1','2':'2','3':'3','4':'4'}
+                .webWorks-bg
+                .webWorks
+                    .text-container
+                        .text
+                    .img-container
+                        each val, key in web_arr
+                            .img-sub-container(style="background-image:url(../../assets/webwork"+key+".jpg)")                                                                                   
 
             footer.footer_wrap
                 include ../../public/html/footer.pug

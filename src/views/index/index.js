@@ -5,6 +5,7 @@ import 'slick-carousel';
 import ('../../public/js/header');
 import ('../../public/js/footer');
 import ('../../public/js/slick-animation');
+import ('../../public/js/lettering.min')
 // sass
 import ('slick-carousel/slick/slick.scss');
 import ('slick-carousel/slick/slick-theme.scss');
@@ -101,9 +102,11 @@ function ripple (e){
     document.querySelector('.ripple').classList.add('rippleEffect');  
 }
 
-window.onload = function(){
 
+window.onload = function(){
     //Index init
+    window.addEventListener('resize', globalObject.setTransform);
+
     let index_banner = new banner();
     document.querySelectorAll('.arrow')[0].addEventListener('click',function(){index_banner.prev();},false);
     document.querySelectorAll('.arrow')[1].addEventListener('click',function(){index_banner.next();},false);
@@ -134,7 +137,9 @@ window.onload = function(){
         dots: true,
     }).slickAnimation();
     
-    window.addEventListener('resize', globalObject.setTransform);
+    $('.photoWorks-container-bg p').lettering();
+
+    
 }
 
 // function Animal(){  

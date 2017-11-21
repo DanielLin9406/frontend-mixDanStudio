@@ -26,6 +26,7 @@
         .banner_slider{
             flex:1;
             overflow: hidden;
+            box-shadow: 0 23px 54px -22px rgba(0, 0, 0, 0.5) ;
             ul{
                 list-style-type:none;
                 white-space:nowrap;
@@ -181,8 +182,10 @@
         }
     }
     section.iconWrap-container{
-        width: 100%;
+        width: 75%;
         max-width:1080px;
+        background-color:#5f6267;
+        box-shadow: 10px 0px 50px -3px rgba(0, 0, 0, 0.3), -10px 0px 50px -3px rgba(0, 0, 0, 0.3);
         margin: auto;
         @include phone-width{
 
@@ -214,11 +217,13 @@
                 }                
             }
             @include pc-width{
-                width: 73%;
+                width: 90%;
                 height: 65%;
             }
             display: flex;
             flex-flow:row nowrap;
+            position: relative;
+            z-index: 5;
             .icon{
                 letter-spacing: 0.1em;
                 margin: 0 1.5%;
@@ -301,6 +306,46 @@
             }
         }
     }
+    .photoWorks-container-bg{
+        position: relative;
+        width: 75%;
+        height:0;
+        padding-bottom:8%;
+        max-width: 1080px;
+        font-size: 7rem;
+        margin: auto;
+        background-color:#5f6267;
+        color:rgba(150, 150, 150, 0.8588235294117647);
+        p{
+            position:absolute;
+            top:29px;
+            text-align: left;
+            span{
+                position:relative;
+                text-shadow: 0.05em 0.05em 0.2em rgba(10, 10, 10, 0.4);
+                &.char1{
+                    z-index:5;
+                    top:-16px;
+                }
+                &.char2{
+                    z-index:3;
+                    top:-36px;
+                }
+                &.char3{
+                    z-index:3;
+                    top:-23px;
+                }
+                &.char4{
+                    z-index:3;
+                    top:-33px;
+                }
+                &.char5{
+                    z-index:3;
+                    top:-23px;
+                }                                                                
+            }
+        }
+    }    
     section.photoWorks-container{
         width: 100%;
         height:600px;
@@ -310,12 +355,13 @@
         align-items: center;
         justify-content: center;
         position: relative;
-        overflow: hidden;
+        overflow: none;
+        z-index: 3;
         .photoWorks{
             max-width:695px;
             margin:10px 0;
             margin:auto;
-            box-shadow: 0 20px 50px -25px rgba(0, 0, 0, 1);
+            box-shadow: 0 34px 54px -22px rgba(0,0,0,0.5);
             position: relative;
             [data-animation-in]{
                 // Slick presets
@@ -434,6 +480,7 @@
                 }
             }
             .slick-dots {
+                bottom:-48px;
                 li {
                     height: 3px;
                     width: 50px;
@@ -473,6 +520,111 @@
         }
         .rippleEffect {
             animation: rippleDrop .3s linear;
+        }
+    }
+    section.webWorks-container{
+        width: 100%;
+        height:600px;
+        background-color:#c0c0c0;
+        position: relative;
+        .webWorks-bg{
+            width: 75%;
+            height: 100%;
+            left:0;
+            right:0;
+            margin: auto;
+            position: absolute;
+            &:before{
+                content:'';
+                display: block;
+                position: absolute;
+                left:0;
+                right:0;
+                margin:auto;
+                top:0;
+                width: 70%;
+                height: 100%;
+                background-color: #4f5556;
+                box-shadow: 10px 0 53px -22px rgba(0, 0, 0, 0.6), -10px 0 53px -22px rgba(0, 0, 0, 0.6)
+            }
+            &:after{
+                content:'';
+                display: block;
+                position: absolute;
+                left:5%;
+                right:0;
+                margin:auto;
+                top:0;
+                bottom:0;
+                width: 90%;
+                height: 65%;
+                background-color: #333;
+                box-shadow: 0 43px 40px -33px rgba(0, 0, 0, 0.6);        
+            }
+        }
+        .webWorks{
+            width: 67.5%;
+            height: 60%;
+            margin: auto;
+            position: absolute;
+            left:0;
+            right:7%;
+            top:0;
+            bottom:16%;
+            display: flex;
+            .text-container{
+                width: 50%;
+                height: 100%;
+                box-sizing: border-box;
+                padding:10px;
+                background-color:transparent;
+                position: relative;
+                &:before{
+                    display: block;
+                    content: '';                    
+                    width: 100%;
+                    height: 89%;
+                    position: absolute;
+                    right:0;
+                    top:0;
+                    bottom:0;
+                    margin:auto;
+                    background-color:#fff;
+                    box-shadow: 0 13px 36px -5px rgba(0, 0, 0, 0.5);
+                }
+            }
+            .img-container{
+                width: 50%;
+                z-index: 1;
+                position: relative;
+                &:before{
+                    display: block;
+                    content: '';
+                    width: 100%;
+                    height: auto;
+                    position: absolute;
+                    left:0;
+                    right:0;
+                    top:0;
+                    bottom:0;
+                    box-shadow:0px 15px 27px 0px rgba(0, 0, 0, 0.1),
+                    15px 0px 34px 0px rgba(0, 0, 0, 0.1),
+                    -14px 0px 27px -14px rgba(0, 0, 0, 0.2);
+                }
+                .img-sub-container{
+                    width:50%;
+                    height:50%;
+                    float:left;
+                    -moz-background-size:100% 100%;
+                    -webkit-background-size:100% 100%;
+                    -o-background-size:100% 100%;
+                    background-size:100% 100%;
+                    img{
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+            }
         }
     }
 }
