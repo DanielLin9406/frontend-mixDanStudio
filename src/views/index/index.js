@@ -124,7 +124,7 @@ window.onload = function(){
     }).on('afterChange', function(e, slick, currentSlide, nextSlide) {
         
     }).slick({
-        autoplay: true,
+        autoplay: false,
         autoplaySpeed: 8000,
         slideToShow:1,
         slideToScroll:1,
@@ -138,6 +138,7 @@ window.onload = function(){
     }).slickAnimation();
     
     $('.photoWorks-container-bg p').lettering();
+    $('.webWorks-container-bg p').lettering();
 
     
 }
