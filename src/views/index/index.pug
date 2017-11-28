@@ -102,7 +102,7 @@ html(lang="en")
                                 p(class="animated" data-animation-in="fadeInUp" data-delay-in="1")=val.text
             //-webwork section
             .webWorks-container-bg
-                p='RWD Webworks'
+                p='RWD works'
             section.webWorks-container
                 -
                     var web_arr = {'1':'1','2':'2','3':'3','4':'4'}
@@ -128,7 +128,8 @@ html(lang="en")
                     .takeActionBtn-container
                         .takeActionBtn
                             a(href='reserve.html')='馬上預約'
-            
+            //-takeaction section
+            section.status-container
             footer.footer_wrap
                 include ../../public/html/footer.pug
         script(src='./js/vendor.js')

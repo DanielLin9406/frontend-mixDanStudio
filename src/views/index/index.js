@@ -96,12 +96,75 @@ function ripple (e){
     let y = pageY - posY - buttonHeight / 2;
   
     let cssStyle = 'width:'+buttonWidth+'px;height:'+buttonHeight+'px;top:'+y+'px'+';left:'+x+'px;';
-    // console.log(cssStyle);
+
     // Add the ripples CSS and start the animation
     document.querySelector('.ripple').style.cssText = cssStyle;
     document.querySelector('.ripple').classList.add('rippleEffect');  
 }
 
+function getPosition(element) {
+    var xPosition = 0;
+    var yPosition = 0;
+
+    while(element) {
+        xPosition += (element.offsetLeft - element.scrollLeft + element.clientLeft);
+        yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
+        element = element.offsetParent;
+    }
+
+    return { x: xPosition, y: yPosition };
+}
+
+// Header hide when scroll down
+var lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+var takeActionHeight = '';
+var takeActionContainerToTop = '';
+var takeActionContainerToBottom = '';
+var footerHeight = '';
+var productItemCheckoutCss_general ='';
+var productItemCheckoutCss_reachPoint ='';
+var productItemCheckoutCss_reachFooter = '';
+var bodyHeight = '';
+var windowHeight = '';
+var toFooterTop = '';
+var statusContainer = '';
+var statusContainerToTop = '';
+window.addEventListener("scroll",function(){
+    bodyHeight = document.body.clientHeight;
+    windowHeight = window.innerHeight;
+
+    takeActionHeight = document.querySelector('.takeAction').clientHeight;
+    statusContainer = document.querySelector('.status-container').clientHeight;
+
+    takeActionContainerToTop = getPosition(document.querySelector('.takeAction-container'));
+    statusContainerToTop = getPosition(document.querySelector('.status-container'));
+
+    // Desktop
+    takeActionContainerToBottom = statusContainerToTop.y - takeActionHeight - ((windowHeight - takeActionHeight) / 2);
+    
+    // Desktop revised css style
+    productItemCheckoutCss_general = "position:absolute;";
+    productItemCheckoutCss_reachPoint = "position:fixed;";
+    productItemCheckoutCss_reachFooter = "position:absolute;bottom:0;top:auto;";
+
+    let st = window.pageYOffset || document.documentElement.scrollTop;
+    if(st>lastScrollTop){
+        document.querySelector(".header_bgc").style.top = '-55px';
+        // subMenu ? subMenu.style.top = '0px': false;
+    }else{
+        document.querySelector(".header_bgc").style.top = '0px';
+        // subMenu ? subMenu.style.top = subMenuTop+'px' : false;
+    }
+    lastScrollTop = st;
+    console.log(st);
+    if(st >= takeActionContainerToTop.y && st < takeActionContainerToBottom){
+        document.querySelector('.takeAction').style.cssText = productItemCheckoutCss_reachPoint;
+    }else if(st >= takeActionContainerToBottom){
+        document.querySelector('.takeAction').style.cssText = productItemCheckoutCss_reachFooter;
+    }else{
+        document.querySelector('.takeAction').style.cssText = productItemCheckoutCss_general;
+    }
+})
 
 window.onload = function(){
     //Index init
@@ -139,9 +202,8 @@ window.onload = function(){
     
     $('.photoWorks-container-bg p').lettering();
     $('.webWorks-container-bg p').lettering();
-
-    
 }
+
 
 // function Animal(){  
 
