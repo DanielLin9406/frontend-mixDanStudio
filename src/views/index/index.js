@@ -134,10 +134,10 @@ window.addEventListener("scroll",function(){
     windowHeight = window.innerHeight;
 
     takeActionHeight = document.querySelector('.takeAction').clientHeight;
-    statusContainer = document.querySelector('.status-container').clientHeight;
+    statusContainer = document.querySelector('.statusWrap-container').clientHeight;
 
     takeActionContainerToTop = getPosition(document.querySelector('.takeAction-container'));
-    statusContainerToTop = getPosition(document.querySelector('.status-container'));
+    statusContainerToTop = getPosition(document.querySelector('.statusWrap-container'));
 
     // Desktop
     takeActionContainerToBottom = statusContainerToTop.y - takeActionHeight - ((windowHeight - takeActionHeight) / 2);

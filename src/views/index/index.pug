@@ -128,8 +128,69 @@ html(lang="en")
                     .takeActionBtn-container
                         .takeActionBtn
                             a(href='reserve.html')='馬上預約'
-            //-takeaction section
-            section.status-container
+            //-status section
+            section.statusWrap-container
+                -
+                    var status_arr = [{
+                            num:'1',
+                            title:'4年',
+                            text:'拍攝經驗'
+                        },{
+                            num:'2',
+                            title:'40k次',
+                            text:'快門數'
+                        },{                                                
+                            num:'3',
+                            title:'4年',
+                            text:'程式經驗'                            
+                        },{                                                
+                            num:'4',
+                            title:'45k行',
+                            text:'程式碼'                            
+                        },{                                                
+                            num:'5',
+                            title:'4位',
+                            text:'專業夥伴'                            
+                        }];                 
+                .statusWrap
+                    each val, key in status_arr
+                        .status(style="background-image:url(../../assets/status"+val.num+".jpg)")
+                            .status-header
+                                p=val.title
+                                    span=val.text
+            //-fellow section
+            section.fellowWrap-container
+                -
+                    var fellow_arr = [{
+                            num:'1',
+                            title:'平面攝影師',
+                            name:'Daniel',
+                            en_title:'photographer'
+                        },{
+                            num:'2',
+                            title:'網頁設計師',
+                            name:'DanDan',
+                            en_title:'designer'
+                        },{                                                
+                            num:'3',
+                            title:'網頁工程師',
+                            name:'A Dan',
+                            en_title:'developer'                           
+                        },{                                                
+                            num:'4',
+                            title:'行銷業務',
+                            name:'DanBro',
+                            en_title:'saler'                           
+                        }];            
+                .fellowWrap
+                    each val, key in fellow_arr
+                        .fellow
+                            .fellow-header
+                                img(src='../../assets/fellow_'+val.en_title+'.jpg')
+                                .fellow-img-container
+                                    img(src='../../assets/fellow_'+val.en_title+'.jpg')
+                                p=val.title
+                                    span=val.name
             footer.footer_wrap
                 include ../../public/html/footer.pug
         script(src='./js/vendor.js')
