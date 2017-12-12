@@ -39,6 +39,7 @@
     "jquery": "^3.2.1",
     "json-loader": "^0.5.7",
     "lodash": "^4.17.4",
+    "mapbox-gl": "^0.42.2",
     "moment": "^2.18.1",
     "node-sass": "^4.5.3",
     "pug-html-loader": "^1.1.5",

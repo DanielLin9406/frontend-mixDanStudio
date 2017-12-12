@@ -1,8 +1,11 @@
 混丹工作室 Native JS ES6化 
 ---
 
-工具：Npm + Babel + Wepack + Pug + SASS + Flexbox + CSS3 + ES6
-
+開發工具：npm + wepack-dev-server + PUG auto reload + SCSS hot reload + JS auto reload
+HTML： Pug + art
+CSS： SCSS + Flexbox + Grid + CSS3 + animate.css + fontawesome
+JS: Babel + ES6 + moment + lodash + jQuery
+套件： Slick + mapbox GL + lettering
 
 Run Server and Development
 ---

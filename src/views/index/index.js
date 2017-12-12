@@ -1,11 +1,13 @@
 // js lib
 import $ from 'jquery';
 import 'slick-carousel';
+import mapboxgl from 'mapbox-gl';
 // js
 import ('../../public/js/header');
 import ('../../public/js/footer');
 import ('../../public/js/slick-animation');
-import ('../../public/js/lettering.min')
+import ('../../public/js/lettering.min');
+
 // sass
 import ('slick-carousel/slick/slick.scss');
 import ('slick-carousel/slick/slick-theme.scss');
@@ -40,14 +42,13 @@ export class banner{
 }
 
 function ripple (e){
-    console.log('ripple click;')
     let posX = null;
     let posY = null;
     let buttonWidth = null;
     let buttonHeight = null;
     let pageX = null;
     let pageY = null;
-    console.log(e.target);
+
     // Setup
     if(e.target.classList.contains('sliderCtrl')){
         posX = e.target.parentNode.parentNode.offsetLeft;
@@ -129,7 +130,127 @@ var windowHeight = '';
 var toFooterTop = '';
 var statusContainer = '';
 var statusContainerToTop = '';
+
+const location_info = {
+    "type": "markerLocation",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "title": "San Blas Islands",
+                "imageUrl": "https://c1.staticflickr.com/5/4241/35467523155_346b08810f_q.jpg",
+                "type": "beach",
+                "iconSize": [60, 60]
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.5640, 25.03421
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "title": "San Blas Islands",
+                "imageUrl": "https://c1.staticflickr.com/5/4241/35467523155_346b08810f_q.jpg",
+                "type": "beach",
+                "iconSize": [60, 60]
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.569, 25.039
+                ]
+            }
+        },            
+    ]
+};
+
+function initMap(map) {
+    map.on('load', function() {
+        const bounds = new mapboxgl.LngLatBounds();
+        location_info.features.forEach((e,i)=>{
+            bounds.extend(e.geometry.coordinates);
+        });
+
+        // Insert the layer beneath any symbol layer.
+        let layers = map.getStyle().layers;
+        
+        let labelLayerId;
+        for (var i = 0; i < layers.length; i++) {
+            if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
+                labelLayerId = layers[i].id;
+                break;
+            }
+        }        
+
+        map.addLayer({
+            'id': '3d-buildings',
+            'source': 'composite',
+            'source-layer': 'building',
+            'filter': ['==', 'extrude', 'true'],
+            'type': 'fill-extrusion',
+            'minzoom': 13,
+            'paint': {
+                'fill-extrusion-color': '#aaa',
+    
+                // use an 'interpolate' expression to add a smooth transition effect to the
+                // buildings as the user zooms in
+                'fill-extrusion-height': [
+                    "interpolate", ["linear"], ["zoom"],
+                    15, 0,
+                    15.05, ["get", "height"]
+                ],
+                'fill-extrusion-base': [
+                    "interpolate", ["linear"], ["zoom"],
+                    15, 0,
+                    15.05, ["get", "min_height"]
+                ],
+                'fill-extrusion-opacity': .6
+            }
+        }, labelLayerId);
+        
+        setTimeout(() => {
+            map.fitBounds(bounds, {
+                padding: { top: 80, bottom: 80, left: 80, right: 80 },
+                easing(t) {
+                    return t * (2 - t);
+                },
+            });
+        }, 300);        
+    });
+}
+
+function initPhotoWorkSlider(){
+    $('.photoWorks')
+    .on('init',function(e,slick){
+        $('[aria-label="Previous"]').addClass('prev sliderCtrl').removeClass('slick-prev slick-arrow');
+        $('[aria-label="Next"]').addClass('next sliderCtrl').removeClass('slick-next slick-arrow');
+        
+        $('[aria-label="Previous"]').text('').append('<div class="slider-controlLine"></div>');
+        $('[aria-label="Next"]').text('').append('<div class="slider-controlLine slider-controlLine-right"></div>');
+    }).on('beforeChange', function(e, slick, currentSlide, nextSlide) {
+
+    }).on('afterChange', function(e, slick, currentSlide, nextSlide) {
+        
+    }).slick({
+        autoplay: false,
+        autoplaySpeed: 8000,
+        slideToShow:1,
+        slideToScroll:1,
+        infinite:true,
+        speed: 1000,
+        pauseOnHover:true,
+        useTransform:true,
+        lazyLoad: 'progressive',
+        arrows: true,
+        dots: true,
+    }).slickAnimation();
+}
+
 window.addEventListener("scroll",function(){
+
     bodyHeight = document.body.clientHeight;
     windowHeight = window.innerHeight;
 
@@ -156,7 +277,7 @@ window.addEventListener("scroll",function(){
         // subMenu ? subMenu.style.top = subMenuTop+'px' : false;
     }
     lastScrollTop = st;
-    console.log(st);
+
     if(st >= takeActionContainerToTop.y && st < takeActionContainerToBottom){
         document.querySelector('.takeAction').style.cssText = productItemCheckoutCss_reachPoint;
     }else if(st >= takeActionContainerToBottom){
@@ -175,34 +296,26 @@ window.onload = function(){
     document.querySelectorAll('.arrow')[1].addEventListener('click',function(){index_banner.next();},false);
     document.querySelector('.photoWorks-container').addEventListener('click',ripple,false);
     
-    $('.photoWorks')
-    .on('init',function(e,slick){
-        $('[aria-label="Previous"]').addClass('prev sliderCtrl').removeClass('slick-prev slick-arrow');
-        $('[aria-label="Next"]').addClass('next sliderCtrl').removeClass('slick-next slick-arrow');
-        
-        $('[aria-label="Previous"]').text('').append('<div class="slider-controlLine"></div>');
-        $('[aria-label="Next"]').text('').append('<div class="slider-controlLine slider-controlLine-right"></div>');
-    }).on('beforeChange', function(e, slick, currentSlide, nextSlide) {
-
-    }).on('afterChange', function(e, slick, currentSlide, nextSlide) {
-        
-    }).slick({
-        autoplay: false,
-        autoplaySpeed: 8000,
-        slideToShow:1,
-        slideToScroll:1,
-        infinite:true,
-        speed: 1000,
-        pauseOnHover:true,
-        useTransform:true,
-        lazyLoad: 'progressive',
-        arrows: true,
-        dots: true,
-    }).slickAnimation();
+    initPhotoWorkSlider();
     
     $('.photoWorks-container-bg p').lettering();
     $('.webWorks-container-bg p').lettering();
+
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZGFuaWVsbGluIiwiYSI6ImNqYXk0b3AxeTdlZ3UzMnE4c2J2MmRvbnAifQ.GqYnJIfzp3uotci1loTQoQ';   
+    
+    var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/dark-v9',
+      center: [121.54, 25.02],
+      zoom: 12,
+      pitch: 45,
+      bearing: -17.6,      
+    });
+    initMap(map);
 }
+
+
+
 
 
 // function Animal(){  
