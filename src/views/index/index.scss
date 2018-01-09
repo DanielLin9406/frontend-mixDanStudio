@@ -17,7 +17,7 @@
 }
 
 #body_bgc{
-    .banner{
+    section.banner_index-container{
         display: flex;
         align-items:stretch;
         width: 100%;
@@ -1090,6 +1090,9 @@
                     &:nth-child(3){
                         height: 28%;
                         flex:4;
+                        label{
+                            bottom:50%; 
+                        }
                     }
                     label{
                         width: 75%;
@@ -1111,7 +1114,7 @@
                             +input, +textarea{
                                 background-color:rgba(255,255,255,0.5);
                             }
-                        }        
+                        }     
                     }                    
                     input, textarea{
                         border: none;

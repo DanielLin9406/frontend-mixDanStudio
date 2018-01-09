@@ -47,6 +47,7 @@ module.exports = {
   entry: {
     vendor:['moment'],
     index:'./src/views/index/index.js',
+    service:'./src/views/service/service.js',
     photowork:'./src/views/photowork/photowork.js'
   },
   output: {
