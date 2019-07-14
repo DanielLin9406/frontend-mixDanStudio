@@ -1,0 +1,145 @@
+@import './_media.scss';
+@import './_reset.scss';
+@import './_mixin.scss';
+
+body {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  background-color: #c0c0c0;
+  font-family: 'Microsoft YaHei';
+  font-family: 'Huakang';
+  #menuControl {
+    position: absolute;
+    left: -100000px;
+    display: none;
+    &:checked {
+      ~ #main {
+        > header {
+          > .navbgc {
+            > .nav {
+              > ul {
+                @include phone-width {
+                  top: 0;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  #searchControl {
+    position: absolute;
+    left: -100000px;
+    visibility: hidden;
+    &:hover {
+      cursor: pointer;
+    }
+    &:checked {
+      ~ #main {
+        > header {
+          > nav {
+            > ul {
+              li {
+                &:nth-child(7) {
+                  ul {
+                    @include pad-width {
+                      top: 135%;
+                      opacity: 1;
+                    }
+                    @include pc-width {
+                      top: 135%;
+                      opacity: 1;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #main {
+    width: 100%;
+    margin: auto;
+    .headerspace {
+      @include phone-width {
+        @include ratio-box(100%, 0, 16.82243%);
+      }
+      @include pad-width {
+        @include ratio-box(100%, 55px, 0%);
+      }
+      @include pc-width {
+        @include ratio-box(100%, 55px, 0%);
+      }
+    }
+    header {
+      @include pad-width {
+        @include ratio-box(100%, 55px, 0%);
+        position: fixed;
+        top: 0;
+        z-index: 2000;
+      }
+      @include pc-width {
+        @include ratio-box(100%, 55px, 0);
+        @include boxShadow(four);
+        @include transition(one, 0.75s);
+        @include bgc;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        z-index: 2000;
+      }
+    }
+  }
+}
+
+@keyframes rippleDrop {
+  100% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+}
+
+@keyframes arrowLineRotation {
+  to {
+    transform: rotate(135deg);
+  }
+}
+
+@keyframes arrowLineRotationRev {
+  to {
+    transform: rotate(-135deg);
+  }
+}
+
+@keyframes zoomInImage {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+  to {
+    transform: scale3d(1.08, 1.08, 1.08);
+  }
+}
+
+.zoomInImage {
+  animation-name: zoomInImage;
+}
+
+@keyframes zoomOutImage {
+  from {
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.zoomOutImage {
+  animation-name: zoomOutImage;
+}

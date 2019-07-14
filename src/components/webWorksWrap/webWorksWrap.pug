@@ -1,0 +1,16 @@
+.webWorksLettering
+  p='Web works'
+section.webWorksWrap
+  -
+    var web_arr = {'1':'1','2':'2','3':'3','4':'4'}
+  .webWorks-bg
+  .webWorks
+    .text-container
+      .text
+        p='可靠 Ｘ 快速 Ｘ 精準'
+        p='客製化RWD網站'
+      .btn
+        a(href='webWorks.html')='更多作品'
+    .img-group
+      each val, key in web_arr
+        .img-sub-container(style="background-image:url(https://mixdanstudio.s3.amazonaws.com/images/webwork"+key+".jpg)") 

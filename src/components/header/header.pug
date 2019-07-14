@@ -1,0 +1,22 @@
+header
+  a(class="header-logo-link", href='index.html')
+    img(class="header-logo-img", src='https://mixdanstudio.s3.amazonaws.com/images/logo.png')
+  nav
+    div(class="nav-list nav-list-left")
+      //- a(class="nav-item", href='index.html')
+      //-   span(class="nav-item-text")='首頁'
+      div(class="nav-item")
+        input(type="checkbox", id="menuControl1")
+        label(class="nav-item-text" for="menuControl1")='作品集'
+          ul(class="nav-item-submenu-list")
+            li(class="nav-item-submenu-item")
+              div(class="nav-item-submenu-categories")
+                ul(class="nav-item-submenu-categories-list")
+                  li(class="nav-item-submenu-categories-item")
+                    a(class="nav-item-submenu-categories-name", href='photoworks.html')='攝影作品'
+                    a(class="nav-item-submenu-categories-name", href='webworks.html')='網站作品'
+    //- div(class="nav-list nav-list-right")
+    //-   div(class="nav-item nav-item-search")
+    //-     a(class="nav-item-icon-con")
+    //-       i(class="fas fa-search")
+    //-     div(class="dropdown-menu-search")

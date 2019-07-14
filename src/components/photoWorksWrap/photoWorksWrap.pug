@@ -1,0 +1,25 @@
+.photoWorksLettering
+  p='Photography'            
+section.photoWorksWrap               
+  -
+    var photoList = [{
+          num:'1',
+          title:'Fashion Style',
+          text:'make it happen'
+        },{
+          num:'2',
+          title:'Fashion Style',
+          text:'redefined beautiful'
+        },{                                                
+          num:'3',
+          title:'Fashion Style',
+          text:'make it stunning'                            
+        }];
+  .photoWorks
+    each val, key in photoList
+      div(class='slide' class='pw pw'+val.num)
+        .img-group
+          img(async='on', src='https://mixdanstudio.s3.amazonaws.com/images/photoworks'+val.num+'.jpg',alt='攝影比賽'+val.num,class='animated',data-animation-in='zoomInImage')
+        .text-group
+          h4(class="animated" data-animation-in="fadeInLeft" data-delay-in=".5")=val.title
+          p(class="animated" data-animation-in="fadeInUp" data-delay-in="1")=val.text
