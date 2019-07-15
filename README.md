@@ -2,7 +2,7 @@
 
 This is my very first website project to front-end side.
 
-![](https://i.imgur.com/JKoH6tk.jpg)
+![preview](https://i.imgur.com/JKoH6tk.jpg)
 
 ## Installation
 
