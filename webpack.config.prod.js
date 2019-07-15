@@ -46,31 +46,22 @@ const publicConfig = {
           {
             loader: 'css-loader',
             options: {
-              sourceMap: true,
-              modules: false,
-              localIdentName: '[local]-[hash:base64:5]'
+              modules: {
+                localIdentName: '[local]-[hash:base64:5]'
+              }
             }
           },
           {
             loader: 'postcss-loader'
           },
           {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true
-            }
+            loader: 'sass-loader'
           }
         ]
       },
       {
         test: /\.(css)$/,
-        use: [
-          { loader: 'style-loader' },
-          {
-            loader: 'css-loader',
-            options: { sourceMap: true }
-          }
-        ]
+        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }]
       }
     ]
   },
