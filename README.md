@@ -94,6 +94,12 @@ This is my very first website project to front-end side.
 
 ## Installation
 
+Install Dependence
+
+```bash
+npm i
+```
+
 Run Dev
 
 ```bash
