@@ -4,6 +4,26 @@ This is my very first website project to front-end side.
 
 ![](https://i.imgur.com/JKoH6tk.jpg)
 
+## Installation
+
+Install Dependence
+
+```bash
+npm i
+```
+
+Run Dev
+
+```bash
+npm start
+```
+
+Build Production
+
+```bash
+npm run build
+```
+
 ## TechStacks
 
 - Webpack 4
@@ -90,26 +110,6 @@ This is my very first website project to front-end side.
         ├── photowork.js
         ├── photowork.pug
         └── photowork.scss
-```
-
-## Installation
-
-Install Dependence
-
-```bash
-npm i
-```
-
-Run Dev
-
-```bash
-npm start
-```
-
-Build Production
-
-```bash
-npm run build
 ```
 
 ## License
