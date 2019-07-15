@@ -2,7 +2,7 @@
 
 This is my very first website project to front-end side.
 
-![](https://i.imgur.com/XUfVGIH.jpg)
+![](https://i.imgur.com/JKoH6tk.jpg)
 
 ## TechStacks
 
@@ -18,7 +18,7 @@ This is my very first website project to front-end side.
 
 ## Enviorment
 
-- Node v8.11
+- Node v10.16
 - npm v6.9
 
 ## File Structure
