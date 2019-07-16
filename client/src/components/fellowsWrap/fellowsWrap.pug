@@ -1,0 +1,39 @@
+section.fellowWrap
+  -
+    var fellowList = [{
+          num:'1',
+          title:'平面攝影師',
+          name:'Daniel',
+          en_title:'photographer',
+          quote:'該哭就哭'
+        },{
+          num:'2',
+          title:'網頁設計師',
+          name:'DanDan',
+          en_title:'designer',
+          quote:'該笑就笑'
+        },{                                                
+          num:'3',
+          title:'網頁工程師',
+          name:'A Dan',
+          en_title:'developer',
+          quote:'該罵就罵'                         
+        },{                                                
+          num:'4',
+          title:'行銷業務',
+          name:'DanBro',
+          en_title:'saler',
+          quote:'該帥就帥'                       
+        }];            
+  .fellows
+    each val, key in fellowList
+      .fellow
+        img(async='on', src='https://mixdanstudio.s3.amazonaws.com/images/fellow_'+val.en_title+'.jpg')
+        .fellow-header
+          .fellow-img-container
+            img(async='on', src='https://mixdanstudio.s3.amazonaws.com/images/fellow_'+val.en_title+'.jpg')
+          p=val.name
+            span=val.title
+        .fellow-body
+          .text-con
+            p='「'+val.quote+'」'

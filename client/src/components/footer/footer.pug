@@ -1,0 +1,47 @@
+footer
+  .footerWrap
+    .footer.footer-logo
+      .vam
+      a(href="index.html")
+        img(src='https://mixdanstudio.s3.amazonaws.com/images/logo.png',alt="footer img")
+    - 
+      var footerNavList = [
+          //- {
+          //-   class:'footer-services',
+          //-   title:'服務項目',
+          //-   subli:[{aHref:'services',title:'服務項目'},{aHref:'services',title:'工作流程'}]
+          //- },
+          {
+            class:'footer-works',
+            title:'作品欣賞',
+            subli:[{aHref:'photoworks',title:'攝影作品'},{aHref:'webworks',title:'網站作品'}]
+          },
+          //- {
+          //-   class:'footer-brand',
+          //-   title:'品牌故事',
+          //-   subli:[{aHref:'brand',title:'關於D'},{aHref:'brand',title:'團隊介紹'},{aHref:'brand',title:'品牌故事'}]
+          //- },
+          //- {
+          //-   class:'footer-bis',
+          //-   title:'聯絡我們',
+          //-   subli:[{aHref:'reserve',title:'方案選擇'},{aHref:'reserve',title:'檔期查詢'},{aHref:'reserve',title:'聯絡我們'}]
+          //- }
+          ];
+    each val, key in footerNavList
+      div(class='footer' class=[val.class])
+        h2=val.title
+        ul
+          each val2, key2 in val.subli
+            li
+              a(href=val2.aHref+'.html')=val2.title
+    .footer.follow
+      h2='Follow Us！'
+      .follow-social
+        .vam2
+        each val, key in {0:'fb',1:'ig',2:'dir',3:'be'}
+          a
+            div
+              img(src='https://mixdanstudio.s3.amazonaws.com/images/'+val+'.png')
+
+  .bottom-company-name
+      p='攝影服務 / 網站建置 / 全方位視覺整合 / 混丹視覺工作室 MIX DAN STUDIO'

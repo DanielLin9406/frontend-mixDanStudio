@@ -1,0 +1,19 @@
+section.topBannerWrap
+  //-button
+  a.arrow(href='javascript:;')
+    img(class='prev',async='on', src='https://mixdanstudio.s3.amazonaws.com/images/arrow-left-01.png')                
+  
+  //-scroller
+  .banner-slider     
+    //-items
+    ul 
+      each val,key in {'banner_slider_1':'專業可靠快速的攝影服務','banner_slider_2':'全套式的網站建置顧問服務','banner_slider_3':'素材拍攝到網站建置一次完成'}
+        li(style="background-image:url(https://mixdanstudio.s3.amazonaws.com/images/"+key+".jpg)")
+          span=val
+  .caption
+    //- sticky
+  a.reserve-btn(href='reserve.html')='馬上預約'
+      
+  //-button
+  a.arrow(href='javascript:;')
+    img(class='next',async='on', src='https://mixdanstudio.s3.amazonaws.com/images/arrow-right-01.png')

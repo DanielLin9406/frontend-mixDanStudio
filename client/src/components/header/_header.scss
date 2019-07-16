@@ -1,0 +1,281 @@
+header {
+  @include bgc;
+  position: fixed;
+  top: 0;
+  height: 40px;
+  width: 100%;
+  z-index: 1;
+  text-align: center;
+  transition: 0.5s;
+  @include pc-width {
+    max-width: none;
+    overflow: visible;
+    position: fixed;
+    height: 51px;
+  }
+  .header-logo-link {
+    position: relative;
+    height: 100%;
+    width: 28.153%;
+    display: inline-block;
+    vertical-align: middle;
+    z-index: 51;
+    @include pc-width {
+      width: 30%;
+    }
+    .header-logo-img {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      height: 100%;
+    }
+  }
+  nav {
+    width: 100%;
+    height: 100vh;
+    border-top: 1px solid #575757;
+    right: 0;
+    margin: auto;
+    z-index: 5;
+    @include pc-width {
+      width: 60%;
+      height: 100%;
+      background-color: none;
+      border: none;
+      margin: auto;
+      transform: none;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .nav-list {
+      text-align: center;
+      height: auto;
+      float: left;
+      position: relative;
+      @include pc-width {
+        height: 100%;
+      }
+      &.nav-list-left {
+        width: 50%;
+        text-align: center;
+      }
+      &.nav-list-right {
+        width: 50%;
+        text-align: center;
+        font-size: 0;
+        float: right;
+      }
+      .nav-item {
+        width: 100%;
+        display: none;
+        @include pc-width {
+          display: inline-block;
+          position: relative;
+          vertical-align: middle;
+          margin: 0 5px;
+          width: auto;
+          height: 100%;
+          text-align: center;
+          @media screen and (max-width: 940px) {
+            margin: 0;
+          }
+        }
+        input[type='checkbox'] {
+          position: absolute;
+          left: -1000000px;
+          &:checked {
+            ~ .nav-item-text {
+              padding-bottom: 0;
+            }
+            ~ .nav-item-submenu-categories-list {
+              height: auto;
+              transition: 0.5s;
+            }
+          }
+        }
+        .nav-item-text {
+          width: auto;
+          height: 100%;
+          display: block;
+          line-height: default;
+          padding: 0 25px;
+          text-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+          position: relative;
+          @include pc-width {
+            line-height: 52px;
+            text-align: center;
+          }
+          &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 0%;
+            border-top: 3px solid #00bd9e;
+            transition: 0.5s;
+          }
+          .nav-item-submenu-list {
+            cursor: default;
+            position: relative;
+            width: 100%;
+            top: 100%;
+            left: 0;
+            z-index: 3;
+            height: 0;
+            overflow: hidden;
+            transition: 0.5s;
+            @include pc-width {
+              display: none;
+              position: absolute;
+              background-color: #000;
+              overflow: unset;
+              height: auto;
+              left: 0;
+            }
+            &:before {
+              content: '';
+              display: none;
+              position: absolute;
+              width: 200vw;
+              height: 100%;
+              left: -700%;
+              right: 0;
+              top: 0;
+              bottom: 0;
+              margin: auto;
+              background: #f9f9f9;
+              border-top: 1px solid #575757;
+            }
+            .nav-item-submenu-item {
+              margin-bottom: 1rem;
+              display: inline-block;
+              vertical-align: top;
+              text-align: left;
+              width: auto;
+              -webkit-box-sizing: border-box;
+              -moz-box-sizing: border-box;
+              box-sizing: border-box;
+              padding: 0rem;
+              position: relative;
+              @include pc-width {
+                padding: 5px 3px 5px 0;
+                margin: 20px 0;
+                @media screen and (max-width: 975px) {
+                  width: auto;
+                }
+                @media screen and (min-width: 976px) and (max-width: 1100px) {
+                  width: auto;
+                }
+              }
+              .nav-item-submenu-categories {
+                .nav-item-submenu-categories-list {
+                  .nav-item-submenu-categories-item {
+                    .nav-item-submenu-categories-name {
+                      transition: background-color 0.3s;
+                      margin: 7px 0 0 0;
+                      display: block;
+                      position: relative;
+                      z-index: 3;
+                      text-transform: uppercase;
+                      font-size: 1.1rem;
+                      line-height: 30px;
+                      &:before {
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        background-color: #00bd9e;
+                        width: 2px;
+                        height: 0;
+                        opacity: 0.5;
+                        top: 0;
+                        bottom: 0;
+                        left: -7px;
+                        margin: auto;
+                        z-index: -1;
+                        transition: 0.3s;
+                      }
+                      &:hover {
+                        &:before {
+                          height: 65%;
+                          opacity: 1;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        &.nav-item-search {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 50px;
+          width: 40px;
+          @include pc-width {
+            position: relative;
+            top: auto;
+            bottom: auto;
+            right: auto;
+          }
+          .nav-item-icon-con {
+            width: 30px;
+            height: 30px;
+            display: block;
+            margin: 23px 0;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            @include pc-width {
+              width: 36px;
+              height: 36px;
+            }
+            i {
+              width: 100%;
+              height: 100%;
+              font-size: 1rem;
+              position: relative;
+              &:before {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+                width: 18px;
+                height: 18px;
+              }
+            }
+          }
+        }
+        &:hover {
+          .nav-item-text {
+            @include pc-width {
+              &:before {
+                width: 100%;
+              }
+            }
+          }
+          .nav-item-submenu-list {
+            @include pc-width {
+              display: block;
+              &:before {
+                display: block;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+section.iconWrap
+  - 
+    var icon_arr = [{
+          id:'icon1',
+          name:'camera',
+          title:'專業攝影服務',
+          subtitle:'獨特細膩的攝影眼',
+          context:['結合專業攝影知識','值得您信賴的品質','影像靈魂與您共鳴']
+        },
+        {
+          id:'icon2',
+          name:'dev',
+          title:'網站建置服務',
+          subtitle:'電商時代不可或缺',
+          context:['網站建置顧問服務','讓您不再缺東缺西','HTML＋CSS＋JS＋PHP']
+        },
+        {
+          id:'icon3',
+          name:'image',
+          title:'視覺整合服務',
+          subtitle:'客製化的影像素材',
+          context:['素材精準符合需求','網站建置素材拍攝','混丹幫您一次解決']
+        }];                   
+  .icons             
+    each val, key in icon_arr
+      div(class='icon' class=[val.id])
+        .img-group
+          img(async='on', src='https://mixdanstudio.s3.amazonaws.com/images/icon_'+val.name+'.png',alt=val.title)
+        .text-group
+          h2=val.title
+          p=val.subtitle
+            each val2, key2 in val.context
+              span=val2
+        .reserve-btn
+          a(href='services.html')='暸解更多'

@@ -1,0 +1,94 @@
+section.locationFormWrap {
+  width: 100%;
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-template-rows: repeat(1, 600px);
+  .locationWrap {
+    position: relative;
+    #map {
+      width: 100%;
+      height: 100%;
+      text-align: left;
+      -webkit-transform-style: preserve-3d;
+    }
+  }
+  .formWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .form {
+      box-shadow: 0px 10px 60px -5px #000;
+      width: 405px;
+      height: 500px;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8% 0;
+      box-sizing: border-box;
+      background-color: rgba(255, 255, 255, 0.95);
+      .input-item,
+      .submit-item {
+        width: 100%;
+        height: 17%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex: 1.5;
+        &:nth-child(3) {
+          flex: 4;
+        }
+        label {
+          width: 75%;
+          height: 12px;
+          margin: auto;
+          text-align: left;
+          position: absolute;
+          box-sizing: border-box;
+          padding: 0 10px;
+          left: 0;
+          right: 0;
+          top: 0;
+          text-transform: uppercase;
+          font-size: 14px;
+          transition: all 0.5s ease-in-out;
+          &:hover {
+            cursor: text;
+            + input,
+            + textarea {
+              background-color: rgba(255, 255, 255, 0.5);
+            }
+          }
+        }
+        input,
+        textarea {
+          border: none;
+          width: 75%;
+          margin: 0 auto;
+          padding: 10px 3%;
+          box-sizing: border-box;
+          color: #000;
+          border-radius: 10px;
+          background: rgb(208, 208, 208);
+          border: 2px solid rgb(208, 208, 208);
+          box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+          overflow: hidden;
+          outline: 0;
+          transition: all 0.5s ease-in-out;
+        }
+        input[type='text'],
+        input[type='password'] {
+          font-family: 'Montserrat', sans-serif;
+        }
+        input[type='submit'] {
+          height: 36px;
+          padding: 0;
+          &:focus {
+            background-color: rgba(255, 255, 255, 0.5);
+          }
+        }
+      }
+    }
+  }
+}
