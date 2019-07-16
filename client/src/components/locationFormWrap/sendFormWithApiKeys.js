@@ -1,7 +1,6 @@
 import load from 'load-script';
-import $ from 'jquery';
 
-function makeApiCall({ ...bodyData }) {
+function makeApiCall(bodyData) {
   const params = {
     spreadsheetId: app.env.GOOGLE_SPREAD_SHEET_ID,
     range: 'A1',
@@ -12,7 +11,7 @@ function makeApiCall({ ...bodyData }) {
   const valueRangeBody = {
     majorDimension: 'ROWS',
     range: '',
-    values: [[userName, userMail, userComment]]
+    values: [bodyData]
   };
 
   const request = gapi.client.sheets.spreadsheets.values.append(
@@ -46,7 +45,7 @@ function initClient() {
     })
     .then(function() {
       gapi.auth2.getAuthInstance().isSignedIn.listen(updateSignInStatus);
-      updateSignInStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+      // updateSignInStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
     });
 }
 
@@ -54,24 +53,23 @@ function handleClientLoad() {
   gapi.load('client:auth2', initClient);
 }
 
-function updateSignInStatus(isSignedIn) {
-  if (isSignedIn) {
-    getFormData;
-    makeApiCall({});
-  }
+function updateSignInStatus(formData) {
+  makeApiCall(formData);
 }
+// function updateSignInStatus(isSignedIn, formData) {
+//   if (isSignedIn) {
+//     makeApiCall(formData);
+//   }
+// }
 
 function getFormData(e) {
-  const nodeList = e.currentTarget.childNodes;
-  const formData = Array.from(nodeList)
-    .filter(dom => dom.className === 'input-item')
-    .map(dom => {
-      return {
-        [dom.childNodes[0].name]: dom.childNodes[0].value
-      };
-    });
-
-  console.log(formData);
+  if (e.target.name === 'submit') {
+    const nodeList = e.currentTarget.childNodes;
+    const formData = Array.from(nodeList)
+      .filter(dom => dom.className === 'input-item')
+      .map(dom => dom.childNodes[0].value);
+    updateSignInStatus(formData);
+  }
 }
 
 function handleSignInClick(event) {

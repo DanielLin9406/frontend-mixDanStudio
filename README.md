@@ -6,22 +6,52 @@ This is my very first website project to front-end side.
 
 ## Installation
 
+### Prerequisite
+
+```bash
+/client/.env
+MAP_BOX_TOKEN=
+GOOGLE_SHEET_API_KEY=
+GOOGLE_CLIENT_ID=4
+GOOGLE_SPREAD_SHEET_ID=
+REFRESH_TOKEN=
+
+/server/.env
+PORT=5000
+CLIENT_ID=
+CLIENT_SECRET=
+
+```
+
+### General
+
 Install Dependence
 
 ```bash
+cd ./client
 npm i
 ```
 
 Run Dev
 
 ```bash
+cd ./client
 npm start
 ```
 
 Build Production
 
 ```bash
+cd ./client
 npm run build
+```
+
+### Fetch google oAuth access_token
+
+```bash
+cd ./server
+npm i
+npm run server
 ```
 
 ## TechStacks
