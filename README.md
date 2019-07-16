@@ -12,7 +12,7 @@ This is my very first website project to front-end side.
 /client/.env
 MAP_BOX_TOKEN=
 GOOGLE_SHEET_API_KEY=
-GOOGLE_CLIENT_ID=4
+GOOGLE_CLIENT_ID=
 GOOGLE_SPREAD_SHEET_ID=
 REFRESH_TOKEN=
 
