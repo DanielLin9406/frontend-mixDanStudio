@@ -45,7 +45,6 @@ function initClient() {
     })
     .then(function() {
       gapi.auth2.getAuthInstance().isSignedIn.listen(updateSignInStatus);
-      // updateSignInStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
     });
 }
 
@@ -56,13 +55,8 @@ function handleClientLoad() {
 function updateSignInStatus(formData) {
   makeApiCall(formData);
 }
-// function updateSignInStatus(isSignedIn, formData) {
-//   if (isSignedIn) {
-//     makeApiCall(formData);
-//   }
-// }
 
-function getFormData(e) {
+function getFormDataAPIKeys(e) {
   if (e.target.name === 'submit') {
     const nodeList = e.currentTarget.childNodes;
     const formData = Array.from(nodeList)
@@ -93,4 +87,4 @@ load('https://apis.google.com/js/api.js', { async: true }, function(
   }
 });
 
-export { getFormData };
+export { getFormDataAPIKeys };

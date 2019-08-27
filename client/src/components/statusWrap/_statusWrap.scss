@@ -10,6 +10,12 @@ section.statusWrap {
     display: flex;
     align-items: center;
     justify-content: center;
+    @include phone-width {
+      flex-flow: column nowrap;
+    }
+    @include pad-width {
+      flex-flow: row nowrap;
+    }
     .status {
       width: 19%;
       height: 100%;
@@ -21,9 +27,23 @@ section.statusWrap {
       border-radius: 3px;
       overflow: hidden;
       z-index: 1;
+      @include phone-width {
+        width: 100%;
+        margin: 0.5% 0.5%;
+      }
+      @include pad-width {
+        width: 100%;
+        margin: 0.5% 0.5%;
+      }
       .status-header {
         margin-top: 50px;
         border: 1px solid #fff;
+        @include phone-width {
+          border: none;
+        }
+        @include pad-width {
+          border: none;
+        }
         position: relative;
         z-index: 3;
         border-radius: 50%;

@@ -2,12 +2,10 @@ import '../../components/header/header';
 import '../../components/footer/footer';
 import banner from '../../shared/banner';
 import ripple from '../../shared/ripple';
-import { getFormData } from '../../components/locationFormWrap/sendFormWithApiKeys';
-
-// Use oAuth2 (need backend)
-// import '../../components/locationFormWrap/sendForm';
 // Use API_KEY
-import '../../components/locationFormWrap/sendFormWithApiKeys';
+import { getFormDataAPIKeys } from '../../components/locationFormWrap/sendFormWithApiKeys';
+// Use oAuth2 (need backend)
+import { getFormDataOAuth } from '../../components/locationFormWrap/sendFormWithoAuth';
 
 // sass
 import './index.scss';
@@ -15,17 +13,17 @@ import './index.scss';
 const onLoadMapbox = ({ default: mapboxgl, initMap }) => {
   mapboxgl.accessToken = app.env.MAP_BOX_TOKEN;
 
-  const map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/dark-v9?optimize=true',
-    center: [121.54, 25.02],
-    minzoom: 3,
-    maxzoom: 9,
-    zoom: 12,
-    pitch: 45,
-    bearing: -17.6
-  });
-  initMap({ map, mapboxgl });
+  // const map = new mapboxgl.Map({
+  //   container: 'map',
+  //   style: 'mapbox://styles/mapbox/dark-v9?optimize=true',
+  //   center: [121.54, 25.02],
+  //   minzoom: 3,
+  //   maxzoom: 9,
+  //   zoom: 12,
+  //   pitch: 45,
+  //   bearing: -17.6
+  // });
+  // initMap({ map, mapboxgl });
 };
 
 const onLoadPhotoWorkSlider = ({ default: initPhotoWorkSlider }) => {
@@ -161,7 +159,16 @@ window.onload = function() {
     },
     false
   );
-  document.querySelector('#form').addEventListener('click', getFormData, false);
+  // Use Api keys to post
+  // document
+  //   .querySelector('#form')
+  //   .addEventListener('click', getFormDataAPIKeys, false);
+  // Use AJAX to call OAuth 2.0 access_token to post
+  // document.querySelector('#login').addEventListener('click', login, false);
+  document
+    .querySelector('#form')
+    .addEventListener('click', getFormDataOAuth, false);
+
   document
     .querySelector('.photoWorksWrap')
     .addEventListener('click', ripple, false);

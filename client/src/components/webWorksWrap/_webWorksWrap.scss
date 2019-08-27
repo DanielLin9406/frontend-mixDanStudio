@@ -37,7 +37,21 @@ section.webWorksWrap {
   position: relative;
   z-index: 3;
   .webWorks-bg {
-    width: 75%;
+    // width: 75%;
+    @include phone-width {
+      width: 90%;
+    }
+    @include pad-width {
+      width: 95%;
+      // height:80vh;
+    }
+    @include pc-width {
+      width: 90%;
+      // height:75vh;
+    }
+    @include pc-large-width {
+      width: 75%;
+    }
     height: 100%;
     left: 0;
     right: 0;

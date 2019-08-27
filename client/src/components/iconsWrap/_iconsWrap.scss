@@ -1,39 +1,45 @@
 section.iconWrap {
-  width: 75%;
   max-width: 1080px;
   background-color: #5f6267;
   box-shadow: 10px 0px 50px -3px rgba(0, 0, 0, 0.3),
     -10px 0px 50px -3px rgba(0, 0, 0, 0.3);
   margin: auto;
-  @include phone-width {
-  }
-  @include pad-width {
-    // height:80vh;
-  }
-  @include pc-width {
-    // height:75vh;
-  }
   display: -webkit-flex;
   display: flex;
   -webkit-align-items: center;
   align-items: center;
   -webkit-justify-content: center;
   justify-content: center;
+  @include phone-width {
+    width: 90%;
+  }
+  @include pad-width {
+    width: 95%;
+    // height:80vh;
+  }
+  @include pc-width {
+    width: 90%;
+    // height:75vh;
+  }
+  @include pc-large-width {
+    width: 75%;
+  }
   .icons {
     @include phone-width {
+      width: 80%;
+      flex-flow: column nowrap;
     }
-    @include pad2pc-width {
+    @include pad-width {
+      width: 90%;
       height: 65%;
-      @media screen and (max-width: 800px) {
-        width: 85%;
-      }
-      @media screen and (min-width: 801px) and (max-width: 960px) {
-        width: 75%;
-      }
+      flex-flow: column nowrap;
     }
     @include pc-width {
       width: 90%;
-      // height: 82%;
+      @media screen and (max-width: 800px) {
+        width: 90%;
+        flex-flow: row nowrap;
+      }
     }
     display: flex;
     flex-flow: row nowrap;
@@ -46,12 +52,20 @@ section.iconWrap {
         0 17px 17px 0 rgba(0, 0, 0, 0.15);
       flex: 1;
       display: flex;
-      flex-flow: column nowrap;
       height: 100%;
-      max-height: 450px;
+      flex-flow: column nowrap;
       position: relative;
       background-color: rgba(252, 252, 252, 1);
       border-radius: 5px;
+      // @include phone-width {
+      // }
+      // @include pad-width {
+      //   flex: 2;
+      // }
+      // @include pc-width {
+      //   flex: 1;
+      //   flex-flow: row nowrap;
+      // }
       .img-group {
         background-color: rgba(76, 90, 94, 1);
         width: 30%;

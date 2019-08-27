@@ -68,7 +68,17 @@ const devConfig = {
     port: 8080,
     historyApiFallback: true,
     host: '0.0.0.0',
-    hot: true
+    hot: true,
+    proxy: {
+      '/': {
+        target: 'http://localhost:5000'
+      },
+      '/redirect*': {
+        pathRewrite: { '^/redirect': '/' },
+        target: 'http://localhost:5000'
+      },
+      '/auth/*': 'http://localhost:5000'
+    }
   }
 };
 

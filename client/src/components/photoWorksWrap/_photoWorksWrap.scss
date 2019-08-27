@@ -1,12 +1,25 @@
 .photoWorksLettering {
   position: relative;
-  width: 75%;
   height: 100px;
   max-width: 1080px;
   font-size: 5rem;
   margin: auto;
   background-color: #5f6267;
   color: rgba(150, 150, 150, 0.8588235294117647);
+  @include phone-width {
+    width: 90%;
+  }
+  @include pad-width {
+    width: 95%;
+    // height:80vh;
+  }
+  @include pc-width {
+    width: 90%;
+    // height:75vh;
+  }
+  @include pc-large-width {
+    width: 75%;
+  }
   p {
     position: absolute;
     top: 22%;

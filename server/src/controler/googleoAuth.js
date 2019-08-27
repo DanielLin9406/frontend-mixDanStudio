@@ -1,10 +1,9 @@
 import { google } from "googleapis";
-import axios from "axios";
 
 const oauth2Client = new google.auth.OAuth2(
   process.env.CLIENT_ID,
   process.env.CLIENT_SECRET,
-  `http://localhost:${process.env.PORT}/auth/callback`
+  `http://localhost:8080/auth/callback`
 );
 const scopes = ["https://www.googleapis.com/auth/spreadsheets"];
 
@@ -15,17 +14,21 @@ const url = oauth2Client.generateAuthUrl({
   scope: scopes
 });
 
-function fetchUrl() {
-  axios.get(url);
-  console.log(url);
-  console.log("request sent");
-}
-
+/**
+ * @param {string} code 
+ * @returns {object} tokens
+  {
+    access_token:
+    refresh_token:
+    scope:
+    token_type:
+    expiry_date:
+  }
+ */
 async function getUser(code) {
   const { tokens } = await oauth2Client.getToken(code);
-  console.log(tokens);
   return tokens;
 }
 
-export { getUser };
-export default fetchUrl;
+export { getUser, oauth2Client };
+export default url;
