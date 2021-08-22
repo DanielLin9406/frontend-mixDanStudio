@@ -61,7 +61,7 @@ const getImport = () => asyncLoadComponents.map(ele => ele.import);
 
 // Async import componet
 Promise.all(getImport()).then(component => {
-  console.log('component loading');
+  console.log('Component Loaded.');
   // document.body.appendChild(...component);
 });
 
